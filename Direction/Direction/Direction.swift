@@ -15,25 +15,25 @@ public enum DirectionType: String {
     case bicycling = "bicycling"
 }
 
-class Direction {
+public class Direction {
     
     let fromLocation: String?
     let toLocation: String?
     var type: DirectionType?
     
-    convenience init(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, mode: DirectionType) {
+    public convenience init(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, mode: DirectionType) {
         let from = String(format: "%f,%f",from.latitude,from.longitude)
         let to = String(format: "%f,%f",to.latitude,to.longitude)
         self.init(from: from, to: to, mode: mode)
     }
     
-    init(from: String, to: String, mode: DirectionType) {
+    public init(from: String, to: String, mode: DirectionType) {
         self.fromLocation = from
         self.toLocation = to
         self.type = mode
     }
     
-    func directionCompletion(handler: @escaping (_ route: Route) -> Void,
+    open func directionCompletion(handler: @escaping (_ route: Route) -> Void,
                              failuer: @escaping (_ error: String) -> Void) {
         
         if self.type == nil {

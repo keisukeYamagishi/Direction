@@ -19,12 +19,12 @@ let polyline = "polyline"
 let points = "points"
 
 
-struct Route {
+public struct Route {
     var json: [String: String] = [:]
     var pattern: [String] = []
 }
 
-class RouteParser {
+public class RouteParser {
     
     var route: Route = Route(json: [:], pattern: [])
     
