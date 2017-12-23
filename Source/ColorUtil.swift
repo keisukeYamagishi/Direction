@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ColorUtil {
+public class ColorUtil {
     
-    init() {}
+    public init() {}
     
     var colorNumbner: Int = 0
     
