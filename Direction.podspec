@@ -19,6 +19,6 @@ Pod::Spec.new do |s|
   s.author             = { "keisuke" => "jam330157@gmail.com" }
   s.source       = { :git => "https://github.com/keisukeYamagishi/Direction.git", :tag => "#{s.version}" }
   s.ios.deployment_target = '8.0'
-  
+
   s.source_files  = "Source", "Source/*.swift"
 end

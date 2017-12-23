@@ -52,12 +52,9 @@ class Direction {
         let dataTask = session.dataTask(with: RouteRequest(url: url).request, completionHandler: {
             (data, resp, err) in
             do {
-                guard let json: Any = try JSONSerialization.jsonObject(with: data!,
-                                                                       options: .allowFragments) else {
-                                                                        failuer("not responce")
-                                                                        return
+                let json: Any = try JSONSerialization.jsonObject(with: data!,
+                                                                 options: .allowFragments)
                                                                         
-                }
                 let route: Route = RouteParser(json: json).parse
                 handler(route)
             }catch{

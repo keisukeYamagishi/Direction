@@ -39,7 +39,7 @@ class ColorUtil {
         var greenStr: String = ""
         var blueStr: String = ""
         
-        for str in hex.characters {
+        for str in hex {
             
             if ( hexCou >= 0 && hexCou < 2 ){
                 redStr.append(str)
