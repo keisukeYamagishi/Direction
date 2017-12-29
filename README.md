@@ -31,8 +31,6 @@ default map color #4682b4
 
 get route!!!!
 
-```
-
 ## Installation
 
 ### Cocoapods
