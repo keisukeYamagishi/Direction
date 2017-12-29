@@ -33,6 +33,40 @@ get route!!!!
 
 ```
 
+## Installation
+
+### Cocoapods
+
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+To integrate GMSDirection into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```
+vi ./Podfile 
+```
+
+If you do not have the google map SDK for iOS
+
+```
+target 'Target Name' do
+  use_frameworks!
+  pod 'Direction'
+  # google map SDK for iOS
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+end
+```
+Then, run the following command:
+
+```bash
+$ pod setup
+$ pod install
+```
+
 let direction = Direction(from:"35.6775602107869,139.692658446729",to: "35.707848364433,139.701456092298",mode: .walking)
 direction.directionCompletion(handler: { (route) in
     self.polyLine(path: route.pattern[0])
