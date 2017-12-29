@@ -65,6 +65,9 @@ $ pod setup
 $ pod install
 ```
 
+### Sample Code
+
+```
 let direction = Direction(from:"35.6775602107869,139.692658446729",to: "35.707848364433,139.701456092298",mode: .walking)
 direction.directionCompletion(handler: { (route) in
     self.polyLine(path: route.pattern[0])
