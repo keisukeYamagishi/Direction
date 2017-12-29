@@ -28,6 +28,15 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
+#Cocoapods
+profile
+*.moved-aside
+
+#CocoaPod
+Pods/*
+Podfile
+Podfile.lock
+
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace

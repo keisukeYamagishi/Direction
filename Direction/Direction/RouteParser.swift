@@ -20,8 +20,8 @@ let points = "points"
 
 
 public struct Route {
-    var json: [String: String] = [:]
-    var pattern: [String] = []
+    public var json: [String: String] = [:]
+    public var pattern: [String] = []
 }
 
 public class RouteParser {

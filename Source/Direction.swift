@@ -20,6 +20,7 @@ public class Direction {
     let fromLocation: String?
     let toLocation: String?
     var type: DirectionType?
+    public var route: Route?
     
     public convenience init(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, mode: DirectionType) {
         let from = String(format: "%f,%f",from.latitude,from.longitude)
@@ -34,7 +35,7 @@ public class Direction {
     }
     
     open func directionCompletion(handler: @escaping (_ route: Route) -> Void,
-                             failuer: @escaping (_ error: String) -> Void) {
+                                  failuer: @escaping (_ error: String) -> Void) {
         
         if self.type == nil {
             self.type = .walking
@@ -54,9 +55,10 @@ public class Direction {
             do {
                 let json: Any = try JSONSerialization.jsonObject(with: data!,
                                                                  options: .allowFragments)
-                                                                        
-                let route: Route = RouteParser(json: json).parse
-                handler(route)
+                DispatchQueue.main.sync {
+                    self.route = RouteParser(json: json).parse
+                    handler(self.route!)
+                }
             }catch{
                 failuer("exception!")
             }
