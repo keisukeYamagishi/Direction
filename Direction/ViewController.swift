@@ -30,11 +30,11 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         coordinates.append(toMarker)
         self.directionMarker(location: fromMarker)
         self.directionMarker(location: toMarker)
+        
         direction.directionCompletion(handler: { (route) in
             
-            self.mapView.addDirection(path: route.pattern[0])
+            self.mapView.addDirection(path: (route.routes[0]?.overview_polyline?.points)!)
             
-//            self.polyLine(path: route.pattern[0])
         }) { (error) in
             
         }
@@ -60,7 +60,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             let direction = Direction(from:coordinates[0],to: coordinates[1],mode: .walking)
             
             direction.directionCompletion(handler: { (route) in
-                self.mapView.addDirection(path: route.pattern[0])
+//                self.mapView.addDirection(path: route.pattern[0])
                 self.coordinates.removeAll()
             }) { (error) in
                 

@@ -37,7 +37,7 @@ public class Direction {
         self.type = mode
     }
     
-    open func directionCompletion(handler: @escaping (_ route: Route) -> Void,
+    open func directionCompletion(handler: @escaping (_ route: Directions) -> Void,
                                   failuer: @escaping (_ error: String) -> Void) {
         
         if self.type == nil {
@@ -55,16 +55,17 @@ public class Direction {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let dataTask = session.dataTask(with: RouteRequest(url: url).request, completionHandler: {
-            (data, resp, err) in
+            (data, responce, err) in
+            
             do {
-                let json: Any = try JSONSerialization.jsonObject(with: data!,
-                                                                 options: .allowFragments)
                 
-                print (json)
+                let directions = try! JSONDecoder().decode(Directions.self, from: data!)
+
+                print (directions)
                 
                 DispatchQueue.main.sync {
-                    self.route = RouteParser(json: json).parse
-                    handler(self.route!)
+
+                    handler(directions)
                 }
             }catch{
                 failuer("exception!")
@@ -74,7 +75,7 @@ public class Direction {
     }
 }
 
-extension GMSMapView {
+public extension GMSMapView {
     
     public func addDirection (path: String, color: UIColor = .blue) {
         let gmsPath: GMSPath = GMSPath(fromEncodedPath: path)!
@@ -82,6 +83,6 @@ extension GMSMapView {
         line.strokeColor = color
         line.strokeWidth = 6.0
         line.map = self
-    }    
+    }
 }
 

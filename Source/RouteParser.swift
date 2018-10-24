@@ -12,6 +12,7 @@ let sensor = "sensor"
 let origin = "origin"
 let destination = "destination"
 let mode = "mode"
+let key = "key"
 
 let overView = "overview_polyline"
 let routes = "routes"
