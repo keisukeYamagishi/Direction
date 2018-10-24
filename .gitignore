@@ -34,7 +34,6 @@ profile
 
 #CocoaPod
 Pods/*
-Podfile
 Podfile.lock
 
 ## Playgrounds
