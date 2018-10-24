@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A8C0022092E839690363C846 /* Pods_Direction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0AF7E1D2C2A61E0AFB75BDF /* Pods_Direction.framework */; };
-		C73D06181FEAB36500B724E1 /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73D06171FEAB36500B724E1 /* ColorUtil.swift */; };
 		C76C3CCF1FE6345E003544EB /* RouteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76C3CCE1FE6345E003544EB /* RouteParser.swift */; };
 		C76C3CD11FE643DE003544EB /* RouteUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76C3CD01FE643DE003544EB /* RouteUrl.swift */; };
 		C76C3CD31FE64A2D003544EB /* URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76C3CD21FE64A2C003544EB /* URLEncode.swift */; };
@@ -22,7 +21,6 @@
 
 /* Begin PBXFileReference section */
 		8221604AE97372D7261B02E4 /* Pods-Direction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Direction.release.xcconfig"; path = "Pods/Target Support Files/Pods-Direction/Pods-Direction.release.xcconfig"; sourceTree = "<group>"; };
-		C73D06171FEAB36500B724E1 /* ColorUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
 		C76C3CCE1FE6345E003544EB /* RouteParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteParser.swift; sourceTree = "<group>"; };
 		C76C3CD01FE643DE003544EB /* RouteUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteUrl.swift; sourceTree = "<group>"; };
 		C76C3CD21FE64A2C003544EB /* URLEncode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEncode.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 		C7F535831FE2D98E0015EC48 /* Direction */ = {
 			isa = PBXGroup;
 			children = (
-				C73D06171FEAB36500B724E1 /* ColorUtil.swift */,
 				C7F535861FE2DC7E0015EC48 /* Direction.swift */,
 				C76C3CCE1FE6345E003544EB /* RouteParser.swift */,
 				C76C3CD01FE643DE003544EB /* RouteUrl.swift */,
@@ -122,7 +119,6 @@
 				C7F5356A1FE2D7F50015EC48 /* Sources */,
 				C7F5356B1FE2D7F50015EC48 /* Frameworks */,
 				C7F5356C1FE2D7F50015EC48 /* Resources */,
-				1F2F613CC7D7329618D32476 /* [CP] Embed Pods Frameworks */,
 				CA722AC3A512ADDAC8222B64 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -182,21 +178,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F2F613CC7D7329618D32476 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Direction/Pods-Direction-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CA722AC3A512ADDAC8222B64 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -209,7 +190,8 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -246,7 +228,6 @@
 				C7F535741FE2D7F50015EC48 /* ViewController.swift in Sources */,
 				C76C3CD31FE64A2D003544EB /* URLEncode.swift in Sources */,
 				C7F535721FE2D7F50015EC48 /* AppDelegate.swift in Sources */,
-				C73D06181FEAB36500B724E1 /* ColorUtil.swift in Sources */,
 				C7F535871FE2DC7E0015EC48 /* Direction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

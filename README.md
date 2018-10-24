@@ -27,7 +27,13 @@ $ git clone https://github.com/keisukeYamagishi/Direction.git
 ## Easy start
 
 default map line width 0.6f
-default map color #4682b4
+default map color blue
+
+### recommended Color library
+
+A library that can convert recommended hexadecimal numbers to colors
+
+[SHColor](https://cocoapods.org/pods/SHColor)
 
 get route!!!!
 
@@ -44,7 +50,7 @@ $ gem install cocoapods
 To integrate GMSDirection into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```
-vi ./Podfile 
+vi ./Podfile
 ```
 
 If you do not have the google map SDK for iOS
@@ -70,22 +76,31 @@ $ pod install
 ```
 let direction = Direction(from:"35.6775602107869,139.692658446729",to: "35.707848364433,139.701456092298",mode: .walking)
 direction.directionCompletion(handler: { (route) in
-    self.polyLine(path: route.pattern[0])
+
+    for route in route.routes {
+        self.mapView.addDirection(path: (route?.overview_polyline?.points)!)
+    }
+
 }) { (error) in
-
+    print (error)
 }
-
-func polyLine (path: String) {
-        let gmsPath: GMSPath = GMSPath(fromEncodedPath: path)!
-        let line = GMSPolyline(path: gmsPath)
-        line.strokeColor = ColorUtil().HexColor(hex: "34AADC")
-        line.strokeWidth = 6.0
-        line.map = self.mapView
-}
-
 ```
 *too easy!!*
 
 Please pass the first position and the goal of the position as parameter
 
 get route
+
+### Error
+
+10058:
+
+When the status code is 200 and data can be acquired, but there is API key or parameter problem and route can not be acquired
+
+10059:
+
+If a status code other than 200 returns, it will give an HTTPURLResponse Http response code and return an error.
+
+10060:
+
+Unknow Error

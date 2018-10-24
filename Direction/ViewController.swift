@@ -23,17 +23,22 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         self.mapView.delegate = self
         view = self.mapView
         
-        let direction = Direction(from:"35.6775602107869,139.692658446729",to: "35.707848364433,139.701456092298",mode: .walking)
+        let direction = Direction(from:"35.6775602107869,139.692658446729",to: "35.707848364433,139.701456092298")
         let fromMarker = CLLocationCoordinate2D(latitude:35.6775602107869, longitude:139.692658446729)
         let toMarker = CLLocationCoordinate2D(latitude:35.707848364433, longitude:139.701456092298)
         coordinates.append(fromMarker)
         coordinates.append(toMarker)
         self.directionMarker(location: fromMarker)
         self.directionMarker(location: toMarker)
+        
         direction.directionCompletion(handler: { (route) in
-            self.polyLine(path: route.pattern[0])
-        }) { (error) in
             
+            for route in route.routes {
+                self.mapView.addDirection(path: (route?.overview_polyline?.points)!)
+            }
+            
+        }) { (error) in
+            print (error)
         }
     }
 
@@ -52,15 +57,16 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         directionMarker(location: coordinate)
         coordinates.append(coordinate)
         
-        if coordinates.count >= 2 {
+        if coordinates.count == 2 {
             
-            let direction = Direction(from:coordinates[0],to: coordinates[1],mode: .walking)
+            let direction = Direction(from: coordinates[0], to: coordinates[1], alternative: true, mode: .walking)
             
             direction.directionCompletion(handler: { (route) in
-                self.polyLine(path: route.pattern[0])
-                self.coordinates.removeAll()
+                for route in route.routes {
+                    self.mapView.addDirection(path: (route?.overview_polyline?.points)!)
+                }
             }) { (error) in
-                
+                print (error)
             }
         }
     }
@@ -71,14 +77,6 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         marker.title = "start Direction"
         marker.snippet = "Hi! What's up!"
         marker.map = mapView
-    }
-    
-    func polyLine (path: String) {
-        let gmsPath: GMSPath = GMSPath(fromEncodedPath: path)!
-        let line = GMSPolyline(path: gmsPath)
-        line.strokeColor = ColorUtil().HexColor(hex: "34AADC")
-        line.strokeWidth = 6.0
-        line.map = self.mapView
     }
 }
 
