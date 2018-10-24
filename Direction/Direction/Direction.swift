@@ -8,6 +8,9 @@
 
 import Foundation
 import CoreLocation
+import GoogleMaps
+
+public var APIKEY:String = ""
 
 public enum DirectionType: String {
     case driving = "driving"
@@ -44,7 +47,8 @@ public class Direction {
         let query: [String:String] = [sensor:"true",
                                       origin: self.toLocation!,
                                       destination: self.fromLocation!,
-                                      mode: self.type!.rawValue]
+                                      mode: self.type!.rawValue,
+                                      key: APIKEY]
         
         let url = RouteUrl(query: query).url
         print (url)
@@ -55,6 +59,9 @@ public class Direction {
             do {
                 let json: Any = try JSONSerialization.jsonObject(with: data!,
                                                                  options: .allowFragments)
+                
+                print (json)
+                
                 DispatchQueue.main.sync {
                     self.route = RouteParser(json: json).parse
                     handler(self.route!)
@@ -65,5 +72,16 @@ public class Direction {
         })
         dataTask.resume()
     }
+}
+
+extension GMSMapView {
+    
+    public func addDirection (path: String, color: UIColor = .blue) {
+        let gmsPath: GMSPath = GMSPath(fromEncodedPath: path)!
+        let line = GMSPolyline(path: gmsPath)
+        line.strokeColor = color
+        line.strokeWidth = 6.0
+        line.map = self
+    }    
 }
 

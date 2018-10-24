@@ -31,7 +31,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         self.directionMarker(location: fromMarker)
         self.directionMarker(location: toMarker)
         direction.directionCompletion(handler: { (route) in
-            self.polyLine(path: route.pattern[0])
+            
+            self.mapView.addDirection(path: route.pattern[0])
+            
+//            self.polyLine(path: route.pattern[0])
         }) { (error) in
             
         }
@@ -57,7 +60,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             let direction = Direction(from:coordinates[0],to: coordinates[1],mode: .walking)
             
             direction.directionCompletion(handler: { (route) in
-                self.polyLine(path: route.pattern[0])
+                self.mapView.addDirection(path: route.pattern[0])
                 self.coordinates.removeAll()
             }) { (error) in
                 
@@ -73,12 +76,12 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         marker.map = mapView
     }
     
-    func polyLine (path: String) {
-        let gmsPath: GMSPath = GMSPath(fromEncodedPath: path)!
-        let line = GMSPolyline(path: gmsPath)
-        line.strokeColor = ColorUtil().HexColor(hex: "34AADC")
-        line.strokeWidth = 6.0
-        line.map = self.mapView
-    }
+//    func polyLine (path: String) {
+//        let gmsPath: GMSPath = GMSPath(fromEncodedPath: path)!
+//        let line = GMSPolyline(path: gmsPath)
+//        line.strokeColor = ColorUtil().HexColor(hex: "34AADC")
+//        line.strokeWidth = 6.0
+//        line.map = self.mapView
+//    }
 }
 
