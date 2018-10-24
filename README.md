@@ -71,6 +71,15 @@ $ pod setup
 $ pod install
 ```
 
+### parameter
+
+|params|result|type|
+|:---|:----|:----|
+|from| start location|String or CLLocationCoordinate2D|
+|to  | end location|String or CLLocationCoordinate2D|
+|alternative| multiple route| Bool default false |
+|mode|route type|DirectionType walking driving bicycling|
+
 ### Sample Code
 
 ```
