@@ -14,8 +14,8 @@ class RouteUrl {
     
     let query: String!
     
-    init (query: Dictionary<String,String> ){
-        self.query = query.urlEncodedQueryString(using: .utf8)
+    init (query: [String:String] ){
+        self.query = query.encode(using: .utf8)
     }
     
     var url: URL {

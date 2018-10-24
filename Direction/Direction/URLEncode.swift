@@ -18,7 +18,7 @@ extension String{
     /*
      * PersentEncode
      */
-    func UrlEncode(_ encodeAll: Bool = false) -> String {
+    func urlEncode(_ encodeAll: Bool = false) -> String {
         var allowedCharacterSet: CharacterSet = .urlQueryAllowed
         allowedCharacterSet.remove(charactersIn: "\n:#/?@!$&'()*+,;=")
         if !encodeAll {
@@ -68,12 +68,12 @@ extension Dictionary {
      * encoded Dictionary's value
      *
      */
-    func urlEncodedQueryString(using encoding: String.Encoding) -> String {
+    func encode(using encoding: String.Encoding) -> String {
         var parts = [String]()
         
         for (key, value) in self {
-            let keyString = "\(key)".UrlEncode()
-            let valueString = "\(value)".UrlEncode(keyString == "status")
+            let keyString = "\(key)".urlEncode()
+            let valueString = "\(value)".urlEncode(keyString == "status")
             let query: String = "\(keyString)=\(valueString)"
             parts.append(query)
         }

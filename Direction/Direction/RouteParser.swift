@@ -13,6 +13,7 @@ let origin = "origin"
 let destination = "destination"
 let mode = "mode"
 let key = "key"
+let alternatives = "alternatives"
 
 let overView = "overview_polyline"
 let routes = "routes"
@@ -20,7 +21,8 @@ let polyline = "polyline"
 let points = "points"
 
 public struct Directions:Codable {
-    var geocoded_waypoints:[GeocodedWaypoints?]
+    var error_message:String?
+    var geocoded_waypoints:[GeocodedWaypoints?]?
     var routes: [Routes?]
     var status: String?
 }
