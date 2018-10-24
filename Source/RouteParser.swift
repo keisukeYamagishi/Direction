@@ -21,72 +21,72 @@ let polyline = "polyline"
 let points = "points"
 
 public struct Directions:Codable {
-    var error_message:String?
-    var geocoded_waypoints:[GeocodedWaypoints?]?
-    var routes: [Routes?]
-    var status: String?
+    public var error_message:String?
+    public var geocoded_waypoints:[GeocodedWaypoints?]?
+    public var routes: [Routes?]
+    public var status: String?
 }
 
 public struct GeocodedWaypoints:Codable {
-    var geocoder_status:String? = ""
-    var place_id:String? = ""
-    var types:[String?]? = []
+    public var geocoder_status:String? = ""
+    public var place_id:String? = ""
+    public var types:[String?]? = []
 }
 
 public struct Routes: Codable {
-    var bounds :Position?
-    var copyrights:String?
-    var overview_polyline:Points?
-    var legs:[Legs?]
-    var summary:String?
-    var warnings:[String?]
+    public var bounds :Position?
+    public var copyrights:String?
+    public var overview_polyline:Points?
+    public var legs:[Legs?]
+    public var summary:String?
+    public var warnings:[String?]
 }
 
 public struct Legs:Codable{
-    var distance:Distancies?
-    var duration:Distancies?
-    var end_address:String?
-    var end_location:Coordinate?
-    var start_address:String?
-    var start_location:Coordinate?
-    var steps:[Step?]
-//    var traffic_speed_entry:[String?]
-//    var via_waypoint:[String?]
+    public var distance:Distancies?
+    public var duration:Distancies?
+    public var end_address:String?
+    public var end_location:Coordinate?
+    public var start_address:String?
+    public var start_location:Coordinate?
+    public var steps:[Step?]
+//    public var traffic_speed_entry:[String?]
+//    public var via_waypoint:[String?]
 }
 
 public struct Step:Codable{
-    var distance:Distancies?
-    var duration:Distancies?
-    var end_location:Coordinate?
-    var html_instructions:String?
-    var polyline:Polylines?
-    var start_location:Coordinate?
-    var travel_mode:String?
+    public var distance:Distancies?
+    public var duration:Distancies?
+    public var end_location:Coordinate?
+    public var html_instructions:String?
+    public var polyline:Polylines?
+    public var start_location:Coordinate?
+    public var travel_mode:String?
 }
 
 public struct Distancies:Codable {
-    var text:String?
-    var value: Int?
+    public var text:String?
+    public var value: Int?
 }
 
 public struct Position:Codable{
-    var northeast:Coordinate?
-    var southwest:Coordinate?
+    public var northeast:Coordinate?
+    public var southwest:Coordinate?
 }
 
 public struct Coordinate:Codable {
-    var lat: Double?
-    var lng: Double?
+    public var lat: Double?
+    public var lng: Double?
 }
 
 public struct Polylines:Codable{
-    var points:String?
+    public var points:String?
 }
 
 public struct OverviewPolyline:Codable {
-    var points:Points?
+    public var points:Points?
 }
 
 public struct Points:Codable {
-    var points:String?
+    public var points:String?
 }
