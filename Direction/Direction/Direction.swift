@@ -50,7 +50,7 @@ public class Direction: NSObject, URLSessionDataDelegate {
         self.init(from: from, to: to,alternative: alternative, mode: mode)
     }
     
-    public init(from: String, to: String,alternative:Bool, mode: DirectionType = .walking) {
+    public init(from: String, to: String,alternative:Bool = false, mode: DirectionType = .walking) {
         self.fromLocation = from
         self.toLocation = to
         self.altanative = alternative ? "true" : "false"
