@@ -3,7 +3,5 @@
 
 source 'https://github.com/CocoaPods/Specs.git'
 target 'Direction' do 
-  use_frameworks!
-  pod 'GoogleMaps'
-  pod 'GooglePlaces'
+  pod 'Direction'
 end

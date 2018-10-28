@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "Direction"
-  s.version      = "1.3.2"
+  s.version      = "1.3.3"
   s.summary      = "Easy route search"
   s.description  = <<-DESC
                     Direction for Google Map for iOS SDK
@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/keisukeYamagishi/Direction.git", :tag => "#{s.version}" }
   s.ios.deployment_target = '8.0'
 
-  s.source_files  = "Source", "Source/*.swift"
+  s.source_files  = "Source", "Pods/Direction/Source/*.swift"
   s.dependency 'GoogleMaps'
+  s.framework  = "Foundation"
 end

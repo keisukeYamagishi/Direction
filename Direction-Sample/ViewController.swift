@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import Direction
 
 class ViewController: UIViewController, GMSMapViewDelegate {
 
@@ -32,9 +33,9 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         self.directionMarker(location: toMarker)
         
         direction.directionCompletion(handler: { (route) in
-            
+            print (route)
             for route in route.routes {
-                self.mapView.addDirection(path: (route?.overview_polyline?.points)!)
+                self.mapView.addDirection(path: (route?.overviewPolyline?.points)!)
             }
             
         }) { (error) in
@@ -63,7 +64,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             
             direction.directionCompletion(handler: { (route) in
                 for route in route.routes {
-                    self.mapView.addDirection(path: (route?.overview_polyline?.points)!)
+                    self.mapView.addDirection(path: (route?.overviewPolyline?.points)!)
                 }
             }) { (error) in
                 print (error)
