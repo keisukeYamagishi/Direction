@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,15 +34,14 @@
 		3F05DA2EAF6A85A18B72B1AF251BA01C /* Pods-Direction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Direction.release.xcconfig"; sourceTree = "<group>"; };
 		40ECE5A034C0E691B263083A545C521E /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		43441263FB7672BF3CE5D571E417BD2A /* Pods-Direction-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Direction-dummy.m"; sourceTree = "<group>"; };
-		45611069481FFC7BFCD13F3772E1BEF0 /* libDirection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDirection.a; path = libDirection.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		45611069481FFC7BFCD13F3772E1BEF0 /* libDirection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDirection.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B024843101666FCB649D813FE522E55 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
 		5D5CDB12F1A931818AD07B50344D05DA /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		680896DF0C13AB0D9BAFDE1CB8ADF174 /* RouteParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RouteParser.swift; path = Source/RouteParser.swift; sourceTree = "<group>"; };
 		6DD8279126E37B2F2CC66D04344C246E /* Direction-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Direction-umbrella.h"; path = "../../Headers/Public/Direction/Direction-umbrella.h"; sourceTree = "<group>"; };
 		7BB59D3A55C4F8B481149C5F00FD49A2 /* Direction.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = Direction.modulemap; path = ../../Headers/Public/Direction/Direction.modulemap; sourceTree = "<group>"; };
 		849CFECAEF98A5E5B1BB6C114DF0B220 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		96351FB09F405D4BE7F987141B6B486D /* libPods-Direction.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Direction.a"; path = "libPods-Direction.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96351FB09F405D4BE7F987141B6B486D /* libPods-Direction.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Direction.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A78FC219C5951E3737F4C65CDFDEE2 /* Direction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Direction.swift; path = Source/Direction.swift; sourceTree = "<group>"; };
 		A183EC81822A738AB9F742A3D446F7EA /* Direction-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Direction-prefix.pch"; sourceTree = "<group>"; };
 		A27F54A3C848E294EB37669CDF7C680E /* Pods-Direction-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Direction-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -95,7 +94,6 @@
 				B4ACD6DF33A179DBCA94F09B2551F8C1 /* Base */,
 				055849C7EC0757CDEF4B25EC5AE781F5 /* Maps */,
 			);
-			name = GoogleMaps;
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
@@ -108,7 +106,6 @@
 				C5EAE4CAA5E7D98AC6BD2F2E905A5D0F /* URLEncode.swift */,
 				642DE2C82F70D118523A09CB89753A91 /* Support Files */,
 			);
-			name = Direction;
 			path = Direction;
 			sourceTree = "<group>";
 		};
@@ -163,7 +160,6 @@
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
 				38C81045FE66A4DABA8AA9BD7633A2A8 /* Pods */,
 				2C888030FA1EE183FEF2C1A5BA529466 /* Products */,
@@ -303,16 +299,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
 				"${PODS_ROOT}/Headers/Public/Direction/Direction.modulemap",
 				"${PODS_ROOT}/Headers/Public/Direction/Direction-umbrella.h",
 			);
 			name = "Copy generated compatibility header";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
 				"${BUILT_PRODUCTS_DIR}/Direction-umbrella.h",
@@ -321,7 +313,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/Direction/Direction.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/Direction/Direction-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
-			showEnvVarsInLog = 1;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -378,8 +369,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -579,8 +569,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
