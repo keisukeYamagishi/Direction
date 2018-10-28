@@ -32,10 +32,6 @@ xcuserdata/
 profile
 *.moved-aside
 
-#CocoaPod
-Pods/*
-Podfile.lock
-
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace

@@ -1,0 +1,6 @@
+module Direction {
+  umbrella header "Direction-umbrella.h"
+
+  export *
+  module * { export * }
+}

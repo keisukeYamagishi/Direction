@@ -1,0 +1,24 @@
+PODS:
+  - Direction (1.3.2):
+    - GoogleMaps
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+
+DEPENDENCIES:
+  - Direction
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Direction
+    - GoogleMaps
+
+SPEC CHECKSUMS:
+  Direction: 231b4911f65ab4befb85e4a3bdcf086e00c7ae22
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+
+PODFILE CHECKSUM: 3f0adac3553209ffeaee2b1001dfaa4a97b626c2
+
+COCOAPODS: 1.5.3
