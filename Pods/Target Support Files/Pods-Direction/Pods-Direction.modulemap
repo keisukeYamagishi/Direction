@@ -1,6 +1,0 @@
-module Pods_Direction {
-  umbrella header "Pods-Direction-umbrella.h"
-
-  export *
-  module * { export * }
-}
