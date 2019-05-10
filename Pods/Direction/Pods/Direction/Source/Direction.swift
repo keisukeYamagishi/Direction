@@ -72,8 +72,6 @@ public class Direction: NSObject, URLSessionDataDelegate {
         
         let url = RouteUrl(query: query).url
         
-        print ("Google Direction API URL: \(url)")
-        
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
         let dataTask = session.dataTask(with:RouteRequest(url: url).request)
         dataTask.resume()
@@ -149,7 +147,7 @@ extension Direction {
  */
 public extension GMSMapView {
     
-    public func addDirection (path: String, color: UIColor = .blue) {
+    func addDirection (path: String, color: UIColor = .blue) {
         let gmsPath: GMSPath = GMSPath(fromEncodedPath: path)!
         let line = GMSPolyline(path: gmsPath)
         line.strokeColor = color
