@@ -4,5 +4,9 @@
 target 'Direction-Sample' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 #  use_frameworks!
-  pod 'Direction'
+  pod 'GoogleMaps'
+end
+
+target 'Direction-SampleTests' do
+  pod 'GoogleMaps'
 end

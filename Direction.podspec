@@ -19,8 +19,9 @@ Pod::Spec.new do |s|
   s.author             = { "keisuke" => "jam330157@gmail.com" }
   s.source       = { :git => "https://github.com/keisukeYamagishi/Direction.git", :tag => "#{s.version}" }
   s.ios.deployment_target = '8.0'
-
-  s.source_files  = "Source", "Pods/Direction/Source/*.swift"
+  s.swift_version = '5.0'
+  s.source_files  = "Source", "Direction/*.swift"
+  s.static_framework = true
   s.dependency 'GoogleMaps'
   s.framework  = "Foundation"
 end
