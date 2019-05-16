@@ -51,4 +51,9 @@ platform :ios do
       log_path: "carthage.log"
     )
   end
+
+  desc "Deploy to cocoapods"
+  lane :deploy_pod do
+    pod_push
+  end
 end

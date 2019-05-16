@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "Direction"
-  s.version      = "1.3.3"
+  s.version      = "1.3.4"
   s.summary      = "Easy route search"
   s.description  = <<-DESC
                     Direction for Google Map for iOS SDK
