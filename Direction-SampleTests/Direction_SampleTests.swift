@@ -20,8 +20,6 @@ class Direction_SampleTests: XCTestCase {
 
     func testSingleDirection() {
         
-        print ("TEST!")
-        
         let exp = expectation(description: "Single Exception")
 
         let direction = Direction(from:"35.6775602107869,139.692658446729",to: "35.707848364433,139.701456092298")
@@ -36,8 +34,6 @@ class Direction_SampleTests: XCTestCase {
     }
     
     func testMultipleDirection(){
-        
-        print ("TEST2")
         
         let exp = expectation(description: "Multiple Exception")
 
@@ -54,13 +50,67 @@ class Direction_SampleTests: XCTestCase {
     
     func test_DrectionFailuer () {
         
-        print ("TEST3")
-        
         let exp = expectation(description: "Failuer Exception")
         
         let direction = Direction(from:"Failuer_1",to: "Failuer_2", alternative: true)
         direction.directionCompletion(handler: { (route) in
             XCTFail("not Failuer OMG 😱")
+            exp.fulfill()
+        }) { (error) in
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 60.0)
+        
+    }
+    
+    func test_DrectionDriving () {
+        
+        print ("TEST3")
+        
+        let exp = expectation(description: "Failuer Exception")
+        
+        let direction = Direction(from:"35.6775602107869,139.692658446729",
+                                  to: "35.707848364433,139.701456092298",
+                                  alternative: true,
+                                  mode: .driving)
+        direction.directionCompletion(handler: { (route) in
+            XCTAssert(route.routes.count > 1 ? true : false )
+            exp.fulfill()
+        }) { (error) in
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 60.0)
+        
+    }
+    
+    func test_DrectionBicycling () {
+        
+        let exp = expectation(description: "Failuer Exception")
+        
+        let direction = Direction(from:"35.6775602107869,139.692658446729",
+                                  to: "35.707848364433,139.701456092298",
+                                  alternative: true,
+                                  mode: .bicycling)
+        direction.directionCompletion(handler: { (route) in
+            XCTAssert(route.routes.count > 1 ? true : false )
+            exp.fulfill()
+        }) { (error) in
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 60.0)
+        
+    }
+    
+    func test_DrectionWalking () {
+        
+        let exp = expectation(description: "Failuer Exception")
+        
+        let direction = Direction(from:"35.6775602107869,139.692658446729",
+                                  to: "35.707848364433,139.701456092298",
+                                  alternative: true,
+                                  mode: .walking)
+        direction.directionCompletion(handler: { (route) in
+            XCTAssert(route.routes.count > 1 ? true : false )
             exp.fulfill()
         }) { (error) in
             exp.fulfill()
