@@ -7,7 +7,7 @@
 //
 
 import XCTest
-//import Direction
+import Direction
 import GoogleMaps
 
 class Direction_SampleTests: XCTestCase {

@@ -8,7 +8,7 @@
 
 import UIKit
 import GoogleMaps
-//import Direction
+import Direction
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
