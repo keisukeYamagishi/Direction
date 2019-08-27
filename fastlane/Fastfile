@@ -20,6 +20,7 @@ platform :ios do
   lane :test do
     test_lib
     pod_lint
+    carthage_build
   end
 
   desc "Cocoapods lint the pod for all platforms"
@@ -38,17 +39,9 @@ platform :ios do
   lane :carthage_build do
     carthage(
       command: "build",
-      use_ssh: false,
-      use_submodules: false,
-      use_binaries: true,
-      no_build: false,
       no_skip_current: true,
-      verbose: false,
       platform: "all",
-      configuration: "Release",
-      cache_builds: false,
-      new_resolver: false,
-      log_path: "carthage.log"
+      configuration: "Release",      
     )
   end
 
