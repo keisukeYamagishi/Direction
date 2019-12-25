@@ -21,7 +21,7 @@ let polyline = "polyline"
 let points = "points"
 
 public struct Directions:Codable {
-    public var errorMessage:String?
+    public var errorMessage: String?
     public var geocodedWaypoints:[GeocodedWaypoints?]?
     public var routes: [Routes?]
     public var status: String?
@@ -33,9 +33,9 @@ public struct Directions:Codable {
 }
 
 public struct GeocodedWaypoints:Codable {
-    public var geocoderStatus:String? = ""
-    public var placeId:String? = ""
-    public var types:[String?]? = []
+    public var geocoderStatus: String?
+    public var placeId: String?
+    public var types: [String?]?
     
     enum GeocodedWaypointsKey:String,CodingKey {
         case geocoderStatus = "geocoder_status"
@@ -46,12 +46,12 @@ public struct GeocodedWaypoints:Codable {
 public struct Routes: Codable {
     public var bounds :Position?
     public var copyrights:String?
-    public var overviewPolyline:Points?
-    public var legs:[Legs?]
-    public var summary:String?
-    public var warnings:[String?]
+    public var overviewPolyline: Points?
+    public var legs: [Legs?]
+    public var summary: String?
+    public var warnings: [String?]
     
-    enum CodingKeys:String,CodingKey {
+    enum CodingKeys: String,CodingKey {
         case bounds = "bounds"
         case copyrights = "copyrights"
         case overviewPolyline = "overview_polyline"
@@ -89,7 +89,7 @@ public struct Step:Codable{
     public var startLocation:Coordinate?
     public var travelMode:String?
     
-    enum StepsKey:String,CodingKey {
+    enum StepsKey :String, CodingKey {
         case endLocation = "end_location"
         case htmlInstructions = "html_instructions"
         case startLocation = "start_location"
@@ -97,29 +97,29 @@ public struct Step:Codable{
     }
 }
 
-public struct Distancies:Codable {
+public struct Distancies: Codable {
     public var text:String?
     public var value: Int?
 }
 
-public struct Position:Codable{
+public struct Position: Codable {
     public var northeast:Coordinate?
     public var southwest:Coordinate?
 }
 
-public struct Coordinate:Codable {
+public struct Coordinate: Codable {
     public var lat: Double?
     public var lng: Double?
 }
 
-public struct Polylines:Codable{
+public struct Polylines: Codable {
     public var points:String?
 }
 
-public struct OverviewPolyline:Codable {
+public struct OverviewPolyline: Codable {
     public var points:Points?
 }
 
-public struct Points:Codable {
+public struct Points: Codable {
     public var points:String?
 }

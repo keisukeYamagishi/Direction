@@ -36,9 +36,9 @@ extension String{
      * }
      *
      */
-    var parameters: Dictionary<String, String> {
+    var parameters: [String:String] {
         
-        var parameters = Dictionary<String, String>()
+        var parameters: [String:String] = [:]
         
         let scanner = Scanner(string: self)
         
