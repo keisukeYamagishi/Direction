@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import GoogleMaps
 
-public var APIKEY:String = ""
+public var APIKEY: String = ""
 
 public enum DirectionType: String {
     case driving = "driving"
@@ -44,23 +44,29 @@ public class Direction: NSObject, URLSessionDataDelegate {
     public var completion: completionHandler?
     public var failuer: failuerHandler?
     
-    public convenience init(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, alternative:Bool = false,  mode: DirectionType = .walking) {
+    public convenience init(from: CLLocationCoordinate2D,
+                            to: CLLocationCoordinate2D,
+                            alternative: Bool = false,
+                            mode: DirectionType = .walking) {
         let from = String(format: "%f,%f",from.latitude,from.longitude)
         let to = String(format: "%f,%f",to.latitude,to.longitude)
         self.init(from: from, to: to,alternative: alternative, mode: mode)
     }
     
-    public init(from: String, to: String,alternative:Bool = false, mode: DirectionType = .walking) {
+    public init(from: String,
+                to: String,
+                alternative:Bool = false,
+                mode: DirectionType = .walking) {
         self.fromLocation = from
         self.toLocation = to
         self.altanative = alternative ? "true" : "false"
         self.type = mode
     }
     
-    open func directionCompletion(handler: @escaping (_ route: Directions) -> Void,
-                                  failuer: @escaping (_ error: Error) -> Void) {
+    open func calculation(completion: @escaping (_ route: Directions) -> Void,
+                          failuer: @escaping (_ error: Error) -> Void) {
         
-        self.completion = handler
+        self.completion = completion
         self.failuer = failuer
         
         let query: [String:String] = [sensor:"true",
@@ -96,18 +102,21 @@ extension Direction {
          * Responce status code 200
          */
         if self.response?.statusCode == 200 {
-            
-            let direction = try! JSONDecoder().decode(Directions.self, from: self.data)
-            
-            /*
-             * Success
-             */
-            if  direction.status == "OK"
-                || direction.errorMessage != nil {
-                self.completion!(direction)
-            }else{// Error handling
-                let err = NSError(domain: "\(direction.errorMessage ?? "Nothing message")\nStatus: \(direction.status ?? "nothins status")", code: 10058)
-                self.failuer!(err)
+            var direction: Directions
+            do {
+                direction = try JSONDecoder().decode(Directions.self, from: self.data)                
+                /*
+                 * Success
+                 */
+                if direction.status == "OK"
+                    || direction.errorMessage != nil {
+                    self.completion!(direction)
+                }else{// Error handling
+                    let err = NSError(domain: "\(direction.errorMessage ?? "Nothing message")\nStatus: \(direction.status ?? "nothins status")", code: 10058)
+                    self.failuer!(err)
+                }
+            }catch{
+                print ("Exception! json decode Error:\(String(describing: String(data: self.data, encoding: .utf8)))")
             }
         }else{//Error Handling
             var statusCode:String = "Nothing Responce"

@@ -7,7 +7,6 @@
 //
 
 import XCTest
-//import Direction
 import GoogleMaps
 
 class Direction_SampleTests: XCTestCase {
@@ -23,7 +22,7 @@ class Direction_SampleTests: XCTestCase {
         let exp = expectation(description: "Single Exception")
 
         let direction = Direction(from:"35.6775602107869,139.692658446729",to: "35.707848364433,139.701456092298")
-        direction.directionCompletion(handler: { (route) in
+        direction.calculation(completion: { (route) in
             XCTAssertEqual(route.routes.count, 1)
             exp.fulfill()
         }) { (error) in
@@ -38,7 +37,7 @@ class Direction_SampleTests: XCTestCase {
         let exp = expectation(description: "Multiple Exception")
 
         let direction = Direction(from:"35.6775602107869,139.692658446729",to: "35.707848364433,139.701456092298", alternative: true)
-        direction.directionCompletion(handler: { (route) in
+        direction.calculation(completion: { (route) in
             XCTAssert(route.routes.count > 1 ? true : false )
             exp.fulfill()
         }) { (error) in
@@ -53,7 +52,7 @@ class Direction_SampleTests: XCTestCase {
         let exp = expectation(description: "Failuer Exception")
         
         let direction = Direction(from:"Failuer_1",to: "Failuer_2", alternative: true)
-        direction.directionCompletion(handler: { (route) in
+        direction.calculation(completion: { (route) in
             XCTFail("not Failuer OMG 😱")
             exp.fulfill()
         }) { (error) in
@@ -73,7 +72,7 @@ class Direction_SampleTests: XCTestCase {
                                   to: "35.707848364433,139.701456092298",
                                   alternative: true,
                                   mode: .driving)
-        direction.directionCompletion(handler: { (route) in
+        direction.calculation(completion: { (route) in
             XCTAssert(route.routes.count > 1 ? true : false )
             exp.fulfill()
         }) { (error) in
@@ -91,7 +90,7 @@ class Direction_SampleTests: XCTestCase {
                                   to: "35.707848364433,139.701456092298",
                                   alternative: true,
                                   mode: .bicycling)
-        direction.directionCompletion(handler: { (route) in
+        direction.calculation(completion: { (route) in
             XCTAssert(route.routes.count > 1 ? true : false )
             exp.fulfill()
         }) { (error) in
@@ -109,7 +108,7 @@ class Direction_SampleTests: XCTestCase {
                                   to: "35.707848364433,139.701456092298",
                                   alternative: true,
                                   mode: .walking)
-        direction.directionCompletion(handler: { (route) in
+        direction.calculation(completion: { (route) in
             XCTAssert(route.routes.count > 1 ? true : false )
             exp.fulfill()
         }) { (error) in
