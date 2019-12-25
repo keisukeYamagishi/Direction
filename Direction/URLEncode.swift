@@ -8,11 +8,6 @@
 
 import Foundation
 
-class URLEncode : NSObject {
-    
-    let Utf8: String.Encoding = .utf8
-}
-
 extension String{
     
     /*
@@ -25,40 +20,6 @@ extension String{
             allowedCharacterSet.insert(charactersIn: "[]")
         }
         return self.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)!
-    }
-    
-    /*
-     * Dictionary Converts a value to a string.
-     * key=value&key=value
-     * {
-     *   key : value,
-     *   key : value
-     * }
-     *
-     */
-    var parameters: [String:String] {
-        
-        var parameters: [String:String] = [:]
-        
-        let scanner = Scanner(string: self)
-        
-        var key: NSString?
-        var value: NSString?
-        
-        while !scanner.isAtEnd {
-            key = nil
-            scanner.scanUpTo("=", into: &key)
-            scanner.scanString("=", into: nil)
-            
-            value = nil
-            scanner.scanUpTo("&", into: &value)
-            scanner.scanString("&", into: nil)
-            
-            if let key = key as String?, let value = value as String? {
-                parameters.updateValue(value, forKey: key)
-            }
-        }
-        return parameters
     }
 }
 
