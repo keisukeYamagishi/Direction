@@ -63,7 +63,7 @@ public class Direction: NSObject, URLSessionDataDelegate {
         self.type = mode
     }
     
-    open func calculation(completion: @escaping (_ route: Directions) -> Void,
+    public func calculation(completion: @escaping (_ route: Directions) -> Void,
                           failuer: @escaping (_ error: Error) -> Void) {
         
         self.completion = completion
