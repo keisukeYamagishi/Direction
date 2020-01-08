@@ -29,7 +29,7 @@ public class Direction: NSObject, URLSessionDataDelegate {
      * member's value
      *
      */
-    public var data: Data = Data()
+    public var data: Data?
     public var response: HTTPURLResponse?
     public var dataTask: URLSessionDataTask!
     
@@ -102,33 +102,31 @@ extension Direction {
          * Responce status code 200
          */
         if self.response?.statusCode == 200 {
-            var direction: Directions
             do {
-                direction = try JSONDecoder().decode(Directions.self, from: self.data)                
-                /*
-                 * Success
-                 */
-                if direction.status == "OK"
-                    || direction.errorMessage != nil {
-                    self.completion!(direction)
-                }else{// Error handling
-                    let err = NSError(domain: "\(direction.errorMessage ?? "Nothing message")\nStatus: \(direction.status ?? "nothins status")", code: 10058)
-                    self.failuer!(err)
+                if self.data != nil {
+                    let direction = try JSONDecoder().decode(Directions.self, from: self.data!)
+                    /*
+                     * Success
+                     */
+                    if direction.status == "OK"
+                        || direction.errorMessage != nil {
+                        self.completion!(direction)
+                    }else{// Error handling
+                        let err = NSError(domain: "\(direction.errorMessage ?? "Nothing message")\nStatus: \(direction.status ?? "nothins status")", code: 10058)
+                        self.failuer!(err)
+                    }
                 }
             }catch{
-                print ("Exception! json decode Error:\(String(describing: String(data: self.data, encoding: .utf8)))")
+                print ("Exception! json decode Error")
             }
         }else{//Error Handling
-            var statusCode:String = "Nothing Responce"
+            var statusCode: String = "Nothing Responce"
             if self.response != nil {
                 statusCode = (response?.statusCode.description)!
                 let err = NSError(domain: "Failuer: responce code: \(statusCode)!", code: 10059)
                 self.failuer!(err)
             }else if error != nil {
                 self.failuer!(error!)
-            }else{
-                let err = NSError(domain: "Unknow Error", code: 10060)
-                self.failuer!(err)
             }
         }
     }
@@ -138,10 +136,11 @@ extension Direction {
      *
      */
     public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        
-        self.data.append(data)
-        
-        guard !data.isEmpty else { return }
+        if self.data == nil {
+            self.data = data
+        }else{
+            self.data?.append(data)
+        }
     }
     
     /*

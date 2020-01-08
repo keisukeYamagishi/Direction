@@ -13,6 +13,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
 
     var mapView:GMSMapView!
     var coordinates: [CLLocationCoordinate2D] = []
+    var direction: Direction!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         
         if coordinates.count == 2 {
             
-            let direction = Direction(from: coordinates[0], to: coordinates[1], alternative: true, mode: .walking)
+            self.direction = Direction(from: coordinates[0], to: coordinates[1], alternative: true, mode: .walking)
             
             direction.calculation(completion: {[weak self] route in
                 for route in route.routes {
