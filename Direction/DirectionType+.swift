@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Array where Element == TransitMode {
-    public var toValue: String {        
+public extension Array where Element == TransitMode {
+    var toValue: String {
         return self.map { $0.rawValue }.joined(separator: "|")
     }
 }
