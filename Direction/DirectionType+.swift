@@ -9,7 +9,7 @@
 import Foundation
 
 extension Array where Element == TransitMode {
-    var toValue: String {        
+    public var toValue: String {        
         return self.map { $0.rawValue }.joined(separator: "|")
     }
 }
