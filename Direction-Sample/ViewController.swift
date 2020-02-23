@@ -17,18 +17,18 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let camera = GMSCameraPosition.camera(withLatitude: 35.690144, longitude: 139.70004, zoom: 14.0)
+
+        let camera = GMSCameraPosition.camera(withLatitude: 37.384224917595063, longitude: -122.03266438096762, zoom: 13.0)
         self.mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self
         view = self.mapView
         
-        let direction = Direction(from:"35.6775602107869,139.692658446729",
-                                  to: "35.707848364433,139.701456092298",
+        let direction = Direction(from:"37.384224917595063,-122.03266438096762",
+                                  to: "37.352311950908444,-121.99342869222163",
                                   alternative: true)
-        let fromMarker = CLLocationCoordinate2D(latitude:35.6775602107869, longitude:139.692658446729)
-        let toMarker = CLLocationCoordinate2D(latitude:35.707848364433, longitude:139.701456092298)
+        let fromMarker = CLLocationCoordinate2D(latitude: 37.384224917595063, longitude: -122.03266438096762)
+        let toMarker = CLLocationCoordinate2D(latitude: 37.352311950908444, longitude: -121.99342869222163)
         coordinates.append(fromMarker)
         coordinates.append(toMarker)
         self.directionMarker(location: fromMarker)

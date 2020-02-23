@@ -16,6 +16,15 @@ public enum DirectionType: String {
     case driving = "driving"
     case walking = "walking"
     case bicycling = "bicycling"
+    case transit = "transit"
+}
+
+public enum TransitMode: String {
+    case bus = "bus"
+    case subway = "subway"
+    case train = "train"
+    case tram = "tram"
+    case rail = "rail"
 }
 
 public class Direction: NSObject, URLSessionDataDelegate {
@@ -24,6 +33,7 @@ public class Direction: NSObject, URLSessionDataDelegate {
     let toLocation: String?
     var altanative:String
     var type: DirectionType
+    var transitMode: String?
     
     /*
      * member's value
@@ -47,20 +57,23 @@ public class Direction: NSObject, URLSessionDataDelegate {
     public convenience init(from: CLLocationCoordinate2D,
                             to: CLLocationCoordinate2D,
                             alternative: Bool = false,
-                            mode: DirectionType = .walking) {
+                            mode: DirectionType = .walking,
+                            transitMode: [TransitMode] = []) {
         let from = String(format: "%f,%f",from.latitude,from.longitude)
         let to = String(format: "%f,%f",to.latitude,to.longitude)
-        self.init(from: from, to: to,alternative: alternative, mode: mode)
+        self.init(from: from, to: to,alternative: alternative, mode: mode, transitMode: transitMode)
     }
     
     public init(from: String,
                 to: String,
                 alternative:Bool = false,
-                mode: DirectionType = .walking) {
+                mode: DirectionType = .walking,
+                transitMode: [TransitMode] = []) {
         self.fromLocation = from
         self.toLocation = to
         self.altanative = alternative ? "true" : "false"
         self.type = mode
+        self.transitMode = transitMode.toValue
     }
     
     public func calculation(completion: @escaping (_ route: Directions) -> Void,
@@ -69,12 +82,15 @@ public class Direction: NSObject, URLSessionDataDelegate {
         self.completion = completion
         self.failuer = failuer
         
-        let query: [String:String] = [sensor:"true",
+        var query: [String:String] = [sensor:"true",
                                       origin: self.toLocation!,
                                       destination: self.fromLocation!,
                                       mode: self.type.rawValue,
                                       alternatives:self.altanative,
                                       key: APIKEY]
+        if self.type == .transit && self.transitMode != nil {
+            query[transit] = self.transitMode
+        }
         
         let url = RouteUrl(query: query).url
         
