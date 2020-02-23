@@ -14,7 +14,7 @@ let destination = "destination"
 let mode = "mode"
 let key = "key"
 let alternatives = "alternatives"
-
+let transit = "transit_mode"
 let overView = "overview_polyline"
 let routes = "routes"
 let polyline = "polyline"
