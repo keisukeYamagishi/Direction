@@ -15,6 +15,7 @@
 		C722000E22894283005FD5F8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C722000822894283005FD5F8 /* README.md */; };
 		C722000F22894283005FD5F8 /* URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000922894283005FD5F8 /* URLEncode.swift */; };
 		C722001022894283005FD5F8 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000A22894283005FD5F8 /* Direction.swift */; };
+		C7434769240275B80024B4DA /* DirectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC60D7240253FC00FF2732 /* DirectionType+.swift */; };
 		C771F0642285660F00381501 /* Direction_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771F0632285660F00381501 /* Direction_SampleTests.swift */; };
 		C7770160228943C5004CE938 /* RouteUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015A228943C4004CE938 /* RouteUrl.swift */; };
 		C7770161228943C5004CE938 /* RouteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015B228943C4004CE938 /* RouteParser.swift */; };
@@ -389,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7434769240275B80024B4DA /* DirectionType+.swift in Sources */,
 				C7770161228943C5004CE938 /* RouteParser.swift in Sources */,
 				C7770164228943C5004CE938 /* URLEncode.swift in Sources */,
 				C722000122893AD9005FD5F8 /* BaseTestCase.swift in Sources */,
