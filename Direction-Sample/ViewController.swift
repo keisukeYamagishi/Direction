@@ -36,7 +36,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         direction.calculation(completion: { [weak self] route in
             self?.mapView.addDirection(routes: route.routes as! [Routes], color: .blue)
         }) { error in
-            
+            print (error)
         }
     }
 
