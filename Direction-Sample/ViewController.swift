@@ -33,16 +33,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         coordinates.append(toMarker)
         self.directionMarker(location: fromMarker)
         self.directionMarker(location: toMarker)
-        
-        direction.calculation(completion: {[weak self] route in
-            print (route)
+        direction.calculation(completion: { [weak self] route in
+            self?.mapView.addDirection(routes: route.routes as! [Routes], color: .blue)
+        }) { error in
             
-            for route in route.routes {
-                self?.mapView.addDirection(path: (route?.overviewPolyline?.points)!)
-            }
-            
-        }) { (error) in
-            print (error)
         }
     }
 
@@ -58,12 +52,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         
         if coordinates.count == 2 {
             
-            self.direction = Direction(from: coordinates[0], to: coordinates[1], alternative: true, mode: .walking)
+            self.direction = Direction(from: coordinates[0], to: coordinates[1], alternative: true, mode: .transit)
             
             direction.calculation(completion: {[weak self] route in
-                for route in route.routes {
-                    self?.mapView.addDirection(path: (route?.overviewPolyline?.points)!)
-                }
+                self?.mapView.addDirection(routes: route.routes as! [Routes])
             }) { (error) in
                 print (error)
             }
