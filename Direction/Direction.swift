@@ -174,7 +174,13 @@ extension Direction {
  */
 public extension GMSMapView {
     
-    func addDirection (path: String, color: UIColor = .blue) {
+    func addDirection(routes: [Routes], color: UIColor = .blue) {
+        for route in routes {
+            self.addOverlay(path: route.overviewPolyline?.points ?? "", color: color)
+        }
+    }
+
+    func addOverlay(path: String, color: UIColor = .blue) {
         let gmsPath: GMSPath = GMSPath(fromEncodedPath: path)!
         let line = GMSPolyline(path: gmsPath)
         line.strokeColor = color
