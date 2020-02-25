@@ -2,6 +2,7 @@
 
 [![](https://img.shields.io/apm/l/vim-mode.svg)](https://github.com/keisukeYamagishi/Direction/blob/master/LICENSE)
 [![](https://img.shields.io/badge/twitter-brew__0__O-blue.svg)](https://twitter.com/brew_0_O)
+[![](https://img.shields.io/badge/lang-Swift-fc3158)](https://swift.org/)
 
 ## OverView
 
@@ -13,6 +14,10 @@ It is a library that makes it easy to conduct route search with the Google map S
 When creating an instance, you can display the route by passing the latitude and longitude of the departure point, the latitude and longitude of the arrival point as an argument, and calling the instance method.
 
 ## Use it
+
+|CI|build|
+|:----|:----|
+|travis|[![Build Status](https://travis-ci.org/keisukeYamagishi/Direction.svg?branch=master)](https://travis-ci.org/keisukeYamagishi/Direction)|
 
 ***Via SSH***: For those who plan on regularly making direct commits, cloning over SSH may provide a better experience (which requires uploading SSH keys to GitHub):
 
