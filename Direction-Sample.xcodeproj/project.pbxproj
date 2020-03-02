@@ -16,11 +16,8 @@
 		C722001022894283005FD5F8 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000A22894283005FD5F8 /* Direction.swift */; };
 		C7434769240275B80024B4DA /* DirectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC60D7240253FC00FF2732 /* DirectionType+.swift */; };
 		C771F0642285660F00381501 /* DirectionSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771F0632285660F00381501 /* DirectionSampleTests.swift */; };
-		C7770160228943C5004CE938 /* RouteUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015A228943C4004CE938 /* RouteUrl.swift */; };
-		C7770161228943C5004CE938 /* RouteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015B228943C4004CE938 /* RouteParser.swift */; };
 		C7770162228943C5004CE938 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C777015C228943C4004CE938 /* LICENSE */; };
 		C7770163228943C5004CE938 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C777015D228943C4004CE938 /* README.md */; };
-		C7770164228943C5004CE938 /* URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015E228943C4004CE938 /* URLEncode.swift */; };
 		C7770165228943C5004CE938 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015F228943C4004CE938 /* Direction.swift */; };
 		C7BC60D8240253FC00FF2732 /* DirectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC60D7240253FC00FF2732 /* DirectionType+.swift */; };
 		C7C703F22184ACAA00706081 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C703EA2184ACA900706081 /* ViewController.swift */; };
@@ -30,6 +27,9 @@
 		C7C703F62184ACAA00706081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C703F02184ACA900706081 /* AppDelegate.swift */; };
 		C7E3CB36240CD6840001DC3C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3CB35240CD6840001DC3C /* Extension.swift */; };
 		C7E4CB3321DCE5B40072F45A /* libPods-Direction-Sample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E4CB3221DCE5B40072F45A /* libPods-Direction-Sample.a */; };
+		C7F43130240CE34300634C3F /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000522894283005FD5F8 /* Route.swift */; };
+		C7F43131240CE34300634C3F /* Directions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000622894283005FD5F8 /* Directions.swift */; };
+		C7F43132240CE34300634C3F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3CB35240CD6840001DC3C /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +231,7 @@
 				C7F5356B1FE2D7F50015EC48 /* Frameworks */,
 				C7F5356C1FE2D7F50015EC48 /* Resources */,
 				CA722AC3A512ADDAC8222B64 /* [CP] Copy Pods Resources */,
+				C75E218524040FA800C07810 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -347,6 +348,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C75E218524040FA800C07810 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		CA722AC3A512ADDAC8222B64 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,13 +408,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7434769240275B80024B4DA /* DirectionType+.swift in Sources */,
-				C7770161228943C5004CE938 /* RouteParser.swift in Sources */,
-				C7770164228943C5004CE938 /* URLEncode.swift in Sources */,
-				C722000122893AD9005FD5F8 /* BaseTestCase.swift in Sources */,
-				C7770160228943C5004CE938 /* RouteUrl.swift in Sources */,
-				C771F0642285660F00381501 /* DirectionSampleTests.swift in Sources */,
+				C7F43130240CE34300634C3F /* Route.swift in Sources */,
+				C7F43131240CE34300634C3F /* Directions.swift in Sources */,
 				C7770165228943C5004CE938 /* Direction.swift in Sources */,
+				C7F43132240CE34300634C3F /* Extension.swift in Sources */,
+				C7434769240275B80024B4DA /* DirectionType+.swift in Sources */,
+				C722000122893AD9005FD5F8 /* BaseTestCase.swift in Sources */,
+				C771F0642285660F00381501 /* DirectionSampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
