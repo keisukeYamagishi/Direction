@@ -8,8 +8,7 @@
 
 import Foundation
 
-extension String{
-    
+extension String {
     /*
      * PersentEncode
      */
@@ -24,14 +23,14 @@ extension String{
 }
 
 extension Dictionary {
-    
+
     /*
      * encoded Dictionary's value
      *
      */
     func encode(using encoding: String.Encoding) -> String {
         var parts = [String]()
-        
+
         for (key, value) in self {
             let keyString = "\(key)".urlEncode()
             let valueString = "\(value)".urlEncode(keyString == "status")
