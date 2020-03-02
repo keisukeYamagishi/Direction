@@ -18,7 +18,9 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let camera = GMSCameraPosition.camera(withLatitude: 37.384224917595063, longitude: -122.03266438096762, zoom: 13.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 37.384224917595063,
+                                              longitude: -122.03266438096762,
+                                              zoom: 13.0)
         self.mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self
