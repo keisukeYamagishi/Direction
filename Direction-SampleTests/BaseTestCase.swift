@@ -12,7 +12,7 @@ import XCTest
 import GoogleMaps
 
 class BaseTestCase: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
         APIKEY = "AIzaSyC0hOi1H3H-GorTbUIG8Ttoy4jDua5Vcd4"

@@ -8,30 +8,32 @@
 
 import Foundation
 
-class RouteUrl {
+class Route {
 
     static let directionApi = "https://maps.googleapis.com/maps/api/directions/json?"
-    
+
     let query: String
-    
-    init (query: [String:String]){
+
+    init (query: [String: String]) {
         self.query = query.encode(using: .utf8)
     }
-    
+
+    static func url(query: [String: String]) -> URL {
+        return  Route(query: query).url
+    }
+
     var url: URL {
-        return NSURL(string: RouteUrl.directionApi + self.query)! as URL
+        return NSURL(string: Route.directionApi + self.query)! as URL
     }
 }
 
 class RouteRequest {
-    
+
     var request: URLRequest
-    
-    init(url: URL){
+
+    init(url: URL) {
         self.request = URLRequest(url: url)
         self.request.httpMethod = "GET"
         self.request.timeoutInterval = 60
     }
-    
 }
-
