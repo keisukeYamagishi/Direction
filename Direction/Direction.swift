@@ -92,12 +92,8 @@ public class Direction: NSObject, URLSessionDataDelegate {
             query[transit] = self.transitMode
         }
 
-        let url = RouteUrl(query: query).url
-
-        print("Google Direction API URL: \(url)")
-
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
-        let dataTask = session.dataTask(with: RouteRequest(url: url).request)
+        let dataTask = session.dataTask(with: Route.request(query))
         dataTask.resume()
     }
 }
