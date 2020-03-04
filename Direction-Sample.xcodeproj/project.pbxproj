@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		564ACE1B3F2A4651DE2CD4F6 /* libPods-Direction-SampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E19D229294A714281E9D215 /* libPods-Direction-SampleTests.a */; };
+		C7112867240E79DB00BE64B5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7112866240E79DA00BE64B5 /* Route.swift */; };
+		C7112868240E8E7800BE64B5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7112866240E79DA00BE64B5 /* Route.swift */; };
 		C722000122893AD9005FD5F8 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000022893AD9005FD5F8 /* BaseTestCase.swift */; };
-		C722000B22894283005FD5F8 /* RouteUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000522894283005FD5F8 /* RouteUrl.swift */; };
 		C722000C22894283005FD5F8 /* RouteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000622894283005FD5F8 /* RouteParser.swift */; };
 		C722000D22894283005FD5F8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C722000722894283005FD5F8 /* LICENSE */; };
 		C722000E22894283005FD5F8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C722000822894283005FD5F8 /* README.md */; };
@@ -17,7 +18,6 @@
 		C722001022894283005FD5F8 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000A22894283005FD5F8 /* Direction.swift */; };
 		C7434769240275B80024B4DA /* DirectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC60D7240253FC00FF2732 /* DirectionType+.swift */; };
 		C771F0642285660F00381501 /* Direction_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771F0632285660F00381501 /* Direction_SampleTests.swift */; };
-		C7770160228943C5004CE938 /* RouteUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015A228943C4004CE938 /* RouteUrl.swift */; };
 		C7770161228943C5004CE938 /* RouteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015B228943C4004CE938 /* RouteParser.swift */; };
 		C7770162228943C5004CE938 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C777015C228943C4004CE938 /* LICENSE */; };
 		C7770163228943C5004CE938 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C777015D228943C4004CE938 /* README.md */; };
@@ -50,8 +50,8 @@
 		7040F61FDBAB33A1B0975AAF /* libPods-Direction-Sample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Direction-Sample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8221604AE97372D7261B02E4 /* Pods-Direction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Direction.release.xcconfig"; path = "Pods/Target Support Files/Pods-Direction/Pods-Direction.release.xcconfig"; sourceTree = "<group>"; };
 		9E30D63E2E6F472235641B3E /* libPods-Direction.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Direction.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7112866240E79DA00BE64B5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C722000022893AD9005FD5F8 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
-		C722000522894283005FD5F8 /* RouteUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteUrl.swift; sourceTree = "<group>"; };
 		C722000622894283005FD5F8 /* RouteParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteParser.swift; sourceTree = "<group>"; };
 		C722000722894283005FD5F8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C722000822894283005FD5F8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		C722000422894283005FD5F8 /* Direction */ = {
 			isa = PBXGroup;
 			children = (
-				C722000522894283005FD5F8 /* RouteUrl.swift */,
+				C7112866240E79DA00BE64B5 /* Route.swift */,
 				C722000622894283005FD5F8 /* RouteParser.swift */,
 				C722000722894283005FD5F8 /* LICENSE */,
 				C722000822894283005FD5F8 /* README.md */,
@@ -390,11 +390,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7112868240E8E7800BE64B5 /* Route.swift in Sources */,
 				C7434769240275B80024B4DA /* DirectionType+.swift in Sources */,
 				C7770161228943C5004CE938 /* RouteParser.swift in Sources */,
 				C7770164228943C5004CE938 /* URLEncode.swift in Sources */,
 				C722000122893AD9005FD5F8 /* BaseTestCase.swift in Sources */,
-				C7770160228943C5004CE938 /* RouteUrl.swift in Sources */,
 				C771F0642285660F00381501 /* Direction_SampleTests.swift in Sources */,
 				C7770165228943C5004CE938 /* Direction.swift in Sources */,
 			);
@@ -405,10 +405,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7BC60D8240253FC00FF2732 /* DirectionType+.swift in Sources */,
+				C7112867240E79DB00BE64B5 /* Route.swift in Sources */,
 				C722000C22894283005FD5F8 /* RouteParser.swift in Sources */,
 				C722000F22894283005FD5F8 /* URLEncode.swift in Sources */,
 				C7C703F62184ACAA00706081 /* AppDelegate.swift in Sources */,
-				C722000B22894283005FD5F8 /* RouteUrl.swift in Sources */,
 				C7C703F22184ACAA00706081 /* ViewController.swift in Sources */,
 				C722001022894283005FD5F8 /* Direction.swift in Sources */,
 			);
