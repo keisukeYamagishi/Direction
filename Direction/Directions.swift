@@ -1,5 +1,5 @@
 //
-//  RouteParser.swift
+//  Directions.swift
 //  Direction
 //
 //  Created by Shichimitoucarashi on 2017/12/17.
@@ -50,6 +50,8 @@ public struct Routes: Codable {
     public var legs: [Legs?]
     public var summary: String?
     public var warnings: [String?]
+    public var fare: Fare?
+    public var waypointOrder: [Int]?
 
     enum CodingKeys: String, CodingKey {
         case bounds = "bounds"
@@ -58,7 +60,15 @@ public struct Routes: Codable {
         case legs = "legs"
         case summary = "summary"
         case warnings = "warnings"
+        case waypointOrder = "waypoint_order"
+        case fare = "fare"
     }
+}
+
+public struct Fare: Codable {
+    public var currency: String?
+    public var text: String?
+    public var value: Double?
 }
 
 public struct Legs: Codable {

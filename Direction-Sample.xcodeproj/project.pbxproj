@@ -11,10 +11,10 @@
 		C7112867240E79DB00BE64B5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7112866240E79DA00BE64B5 /* Route.swift */; };
 		C7112868240E8E7800BE64B5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7112866240E79DA00BE64B5 /* Route.swift */; };
 		C722000122893AD9005FD5F8 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000022893AD9005FD5F8 /* BaseTestCase.swift */; };
-		C722000C22894283005FD5F8 /* RouteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000622894283005FD5F8 /* RouteParser.swift */; };
+		C722000C22894283005FD5F8 /* Directions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000622894283005FD5F8 /* Directions.swift */; };
 		C722000D22894283005FD5F8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C722000722894283005FD5F8 /* LICENSE */; };
 		C722000E22894283005FD5F8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C722000822894283005FD5F8 /* README.md */; };
-		C722000F22894283005FD5F8 /* URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000922894283005FD5F8 /* URLEncode.swift */; };
+		C722000F22894283005FD5F8 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000922894283005FD5F8 /* Extension.swift */; };
 		C722001022894283005FD5F8 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000A22894283005FD5F8 /* Direction.swift */; };
 		C7434769240275B80024B4DA /* DirectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC60D7240253FC00FF2732 /* DirectionType+.swift */; };
 		C771F0642285660F00381501 /* Direction_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771F0632285660F00381501 /* Direction_SampleTests.swift */; };
@@ -52,10 +52,10 @@
 		9E30D63E2E6F472235641B3E /* libPods-Direction.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Direction.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7112866240E79DA00BE64B5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C722000022893AD9005FD5F8 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
-		C722000622894283005FD5F8 /* RouteParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteParser.swift; sourceTree = "<group>"; };
+		C722000622894283005FD5F8 /* Directions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directions.swift; sourceTree = "<group>"; };
 		C722000722894283005FD5F8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C722000822894283005FD5F8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C722000922894283005FD5F8 /* URLEncode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEncode.swift; sourceTree = "<group>"; };
+		C722000922894283005FD5F8 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		C722000A22894283005FD5F8 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		C771F0612285660E00381501 /* Direction-SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Direction-SampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C771F0632285660F00381501 /* Direction_SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction_SampleTests.swift; sourceTree = "<group>"; };
@@ -131,10 +131,10 @@
 			isa = PBXGroup;
 			children = (
 				C7112866240E79DA00BE64B5 /* Route.swift */,
-				C722000622894283005FD5F8 /* RouteParser.swift */,
+				C722000622894283005FD5F8 /* Directions.swift */,
 				C722000722894283005FD5F8 /* LICENSE */,
 				C722000822894283005FD5F8 /* README.md */,
-				C722000922894283005FD5F8 /* URLEncode.swift */,
+				C722000922894283005FD5F8 /* Extension.swift */,
 				C722000A22894283005FD5F8 /* Direction.swift */,
 				C7BC60D7240253FC00FF2732 /* DirectionType+.swift */,
 			);
@@ -406,8 +406,8 @@
 			files = (
 				C7BC60D8240253FC00FF2732 /* DirectionType+.swift in Sources */,
 				C7112867240E79DB00BE64B5 /* Route.swift in Sources */,
-				C722000C22894283005FD5F8 /* RouteParser.swift in Sources */,
-				C722000F22894283005FD5F8 /* URLEncode.swift in Sources */,
+				C722000C22894283005FD5F8 /* Directions.swift in Sources */,
+				C722000F22894283005FD5F8 /* Extension.swift in Sources */,
 				C7C703F62184ACAA00706081 /* AppDelegate.swift in Sources */,
 				C7C703F22184ACAA00706081 /* ViewController.swift in Sources */,
 				C722001022894283005FD5F8 /* Direction.swift in Sources */,
