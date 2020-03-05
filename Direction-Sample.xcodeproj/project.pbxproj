@@ -18,11 +18,9 @@
 		C722001022894283005FD5F8 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000A22894283005FD5F8 /* Direction.swift */; };
 		C7434769240275B80024B4DA /* DirectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC60D7240253FC00FF2732 /* DirectionType+.swift */; };
 		C771F0642285660F00381501 /* Direction_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771F0632285660F00381501 /* Direction_SampleTests.swift */; };
-		C7770161228943C5004CE938 /* RouteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015B228943C4004CE938 /* RouteParser.swift */; };
-		C7770162228943C5004CE938 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C777015C228943C4004CE938 /* LICENSE */; };
-		C7770163228943C5004CE938 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C777015D228943C4004CE938 /* README.md */; };
-		C7770164228943C5004CE938 /* URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015E228943C4004CE938 /* URLEncode.swift */; };
-		C7770165228943C5004CE938 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777015F228943C4004CE938 /* Direction.swift */; };
+		C79752DF241155AF00410BA0 /* Directions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000622894283005FD5F8 /* Directions.swift */; };
+		C79752E0241155B500410BA0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000922894283005FD5F8 /* Extension.swift */; };
+		C79752E12411565500410BA0 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000A22894283005FD5F8 /* Direction.swift */; };
 		C7BC60D8240253FC00FF2732 /* DirectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC60D7240253FC00FF2732 /* DirectionType+.swift */; };
 		C7C703F22184ACAA00706081 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C703EA2184ACA900706081 /* ViewController.swift */; };
 		C7C703F32184ACAA00706081 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C703EB2184ACA900706081 /* Assets.xcassets */; };
@@ -62,12 +60,6 @@
 		C771F0652285660F00381501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C771F06B22856D1600381501 /* libDirection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDirection.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C771F06D22856E4300381501 /* libDirection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDirection.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C777015A228943C4004CE938 /* RouteUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteUrl.swift; sourceTree = "<group>"; };
-		C777015B228943C4004CE938 /* RouteParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteParser.swift; sourceTree = "<group>"; };
-		C777015C228943C4004CE938 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		C777015D228943C4004CE938 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C777015E228943C4004CE938 /* URLEncode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEncode.swift; sourceTree = "<group>"; };
-		C777015F228943C4004CE938 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		C7BC60D7240253FC00FF2732 /* DirectionType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DirectionType+.swift"; sourceTree = "<group>"; };
 		C7C703EA2184ACA900706081 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C7C703EB2184ACA900706081 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,26 +136,12 @@
 		C771F0622285660F00381501 /* Direction-SampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				C7770159228943C4004CE938 /* Direction */,
 				C771F0632285660F00381501 /* Direction_SampleTests.swift */,
 				C771F0652285660F00381501 /* Info.plist */,
 				C722000022893AD9005FD5F8 /* BaseTestCase.swift */,
 			);
 			path = "Direction-SampleTests";
 			sourceTree = "<group>";
-		};
-		C7770159228943C4004CE938 /* Direction */ = {
-			isa = PBXGroup;
-			children = (
-				C777015A228943C4004CE938 /* RouteUrl.swift */,
-				C777015B228943C4004CE938 /* RouteParser.swift */,
-				C777015C228943C4004CE938 /* LICENSE */,
-				C777015D228943C4004CE938 /* README.md */,
-				C777015E228943C4004CE938 /* URLEncode.swift */,
-				C777015F228943C4004CE938 /* Direction.swift */,
-			);
-			path = Direction;
-			sourceTree = SOURCE_ROOT;
 		};
 		C7C703E92184ACA900706081 /* Direction-Sample */ = {
 			isa = PBXGroup;
@@ -287,8 +265,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7770163228943C5004CE938 /* README.md in Resources */,
-				C7770162228943C5004CE938 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,13 +366,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C79752E12411565500410BA0 /* Direction.swift in Sources */,
+				C79752E0241155B500410BA0 /* Extension.swift in Sources */,
+				C79752DF241155AF00410BA0 /* Directions.swift in Sources */,
 				C7112868240E8E7800BE64B5 /* Route.swift in Sources */,
 				C7434769240275B80024B4DA /* DirectionType+.swift in Sources */,
-				C7770161228943C5004CE938 /* RouteParser.swift in Sources */,
-				C7770164228943C5004CE938 /* URLEncode.swift in Sources */,
 				C722000122893AD9005FD5F8 /* BaseTestCase.swift in Sources */,
 				C771F0642285660F00381501 /* Direction_SampleTests.swift in Sources */,
-				C7770165228943C5004CE938 /* Direction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
