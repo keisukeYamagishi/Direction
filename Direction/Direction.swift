@@ -88,13 +88,19 @@ public class Direction: NSObject, URLSessionDataDelegate {
                                       mode: self.type.rawValue,
                                       alternatives: self.altanative,
                                       key: APIKEY]
-        if self.type == .transit && self.transitMode != nil {
+        if self.type == .transit && !(self.transitMode?.isEmpty ?? false) {
             query[transit] = self.transitMode
         }
 
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
-        let dataTask = session.dataTask(with: Route.request(query))
-        dataTask.resume()
+        if let request = Route.request(query) {
+            let dataTask = session.dataTask(with: request)
+            dataTask.resume()
+        }else{
+            failuer(NSError.create(domain: "URL Error",
+                                   code: 10061,
+                                   userInfo: ["LocalizedRecoverySuggestion": "URL is invalid, please check domain and URL and correct."]))
+        }
     }
 }
 

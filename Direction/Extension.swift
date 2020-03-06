@@ -1,5 +1,5 @@
 //
-//  URLEncode.swift
+//  Extension.swift
 //  swiftDemo
 //
 //  Created by shichimi on 2017/03/17.
@@ -38,5 +38,11 @@ extension Dictionary {
             parts.append(query)
         }
         return parts.joined(separator: "&")
+    }
+}
+
+extension Error {
+    static func create(domain: String, code: Int, userInfo: [String: Any]) -> Error {
+        return NSError(domain: domain, code: code, userInfo: userInfo)
     }
 }

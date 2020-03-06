@@ -14,21 +14,24 @@ class Route {
 
     let query: String
 
-    init (_ query: [String: String]) {
+    init(_ query: [String: String]) {
         self.query = query.encode(using: .utf8)
     }
 
-    static func request(_ query: [String: String]) -> URLRequest {
+    static func request(_ query: [String: String]) -> URLRequest? {
         return Route(query).request
     }
     
-    var url: URL {
-        return NSURL(string: Route.directionApi + self.query)! as URL
+    var url: URL? {
+        return URL(string: Route.directionApi + self.query)
     }
 
-    var request: URLRequest {
-        var request = URLRequest(url: self.url)
-        print("Google Direction API URL: \(self.url)")
+    var request: URLRequest? {
+        guard self.url != nil else { return nil }
+        var request = URLRequest(url: url!)
+        if let url = self.url {
+            print("Google Direction API URL: \(String(describing: url))")
+        }
         request.httpMethod = "GET"
         request.timeoutInterval = 60
         return request
