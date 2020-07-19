@@ -35,11 +35,11 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         coordinates.append(toMarker)
         self.directionMarker(location: fromMarker)
         self.directionMarker(location: toMarker)
-        direction.calculation(completion: { [weak self] route in
+        direction.calculation(completion: { [unowned self] route in
             guard let routes = route.routes as? [Routes] else {
                 return
             }
-            self?.mapView.addDirection(routes: routes, color: .blue)
+            self.mapView.addDirection(routes: routes, color: .blue)
         }, failuer: { error in
             print(error)
         })
@@ -59,11 +59,11 @@ class ViewController: UIViewController, GMSMapViewDelegate {
 
             self.direction = Direction(from: coordinates[0], to: coordinates[1], alternative: true, mode: .transit)
 
-            direction.calculation(completion: {[weak self] route in
+            direction.calculation(completion: {[unowned self] route in
                 guard let routes = route.routes as? [Routes] else {
                     return
                 }
-                self?.mapView.addDirection(routes: routes)
+                self.mapView.addDirection(routes: routes)
             }, failuer: { error in
                 print(error)
             })
