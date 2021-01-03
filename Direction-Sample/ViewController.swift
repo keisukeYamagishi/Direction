@@ -15,9 +15,9 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     var coordinates: [CLLocationCoordinate2D] = []
     var direction: Direction!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func loadView() {
+        super.loadView()
+        navigationController?.isNavigationBarHidden = true
         let camera = GMSCameraPosition.camera(withLatitude: 37.384224917595063,
                                               longitude: -122.03266438096762,
                                               zoom: 13.0)
