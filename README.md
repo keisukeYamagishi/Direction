@@ -1,7 +1,6 @@
 # Direction
 
 [![](https://img.shields.io/apm/l/vim-mode.svg)](https://github.com/keisukeYamagishi/Direction/blob/master/LICENSE)
-[![](https://img.shields.io/badge/twitter-brew__0-fc3158)](https://twitter.com/brew_0)
 [![](https://img.shields.io/badge/lang-Swift-fc3158)](https://swift.org/)
 
 ## OverView
