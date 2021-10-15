@@ -9,7 +9,6 @@
 import Foundation
 
 class Route {
-
     static let directionApi = "https://maps.googleapis.com/maps/api/directions/json?"
 
     let query: String
@@ -19,15 +18,15 @@ class Route {
     }
 
     static func request(_ query: [String: String]) -> URLRequest? {
-        return Route(query).request
+        Route(query).request
     }
-    
+
     var url: URL? {
-        return URL(string: Route.directionApi + self.query)
+        URL(string: Route.directionApi + query)
     }
 
     var request: URLRequest? {
-        guard self.url != nil else { return nil }
+        guard url != nil else { return nil }
         var request = URLRequest(url: url!)
         if let url = self.url {
             print("Google Direction API URL: \(String(describing: url))")

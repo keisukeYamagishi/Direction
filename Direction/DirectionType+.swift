@@ -10,6 +10,6 @@ import Foundation
 
 extension Array where Element == TransitMode {
     var toValue: String {
-        return self.map { $0.rawValue }.joined(separator: "|")
+        return map { $0.rawValue }.joined(separator: "|")
     }
 }

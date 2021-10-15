@@ -54,14 +54,14 @@ public struct Routes: Codable {
     public var waypointOrder: [Int]?
 
     enum CodingKeys: String, CodingKey {
-        case bounds = "bounds"
-        case copyrights = "copyrights"
+        case bounds
+        case copyrights
         case overviewPolyline = "overview_polyline"
-        case legs = "legs"
-        case summary = "summary"
-        case warnings = "warnings"
+        case legs
+        case summary
+        case warnings
         case waypointOrder = "waypoint_order"
-        case fare = "fare"
+        case fare
     }
 }
 
