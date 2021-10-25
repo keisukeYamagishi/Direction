@@ -17,5 +17,5 @@ test:
 	-configuration Debug \
 	-workspace Direction-Sample.xcworkspace \
 	-scheme Direction-Sample \
-	-destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=14.5' \
+	-destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=14.4' \
 	clean test CODE_SIGNING_ALLOWED=NO
