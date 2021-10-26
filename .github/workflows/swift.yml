@@ -23,6 +23,5 @@ jobs:
         run: make debug
       - name: Execute test
         env:
-          DESTINATION: platform=${{ matrix.destination }}
           SWIFT_VERSION: ${{ matrix.swift-version }}
         run:  make test
