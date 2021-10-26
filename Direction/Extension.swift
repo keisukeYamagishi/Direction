@@ -18,17 +18,16 @@ extension String {
         if !encodeAll {
             allowedCharacterSet.insert(charactersIn: "[]")
         }
-        return self.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)!
+        return addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)!
     }
 }
 
 extension Dictionary {
-
     /*
      * encoded Dictionary's value
      *
      */
-    func encode(using encoding: String.Encoding) -> String {
+    func encode(using _: String.Encoding) -> String {
         var parts = [String]()
 
         for (key, value) in self {
@@ -43,6 +42,6 @@ extension Dictionary {
 
 extension Error {
     static func create(domain: String, code: Int, userInfo: [String: Any]) -> Error {
-        return NSError(domain: domain, code: code, userInfo: userInfo)
+        NSError(domain: domain, code: code, userInfo: userInfo)
     }
 }

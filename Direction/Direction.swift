@@ -6,8 +6,8 @@
 //  Copyright © 2017年 keisuke yamagishi. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 import GoogleMaps
 
 public var APIKEY: String = ""
@@ -26,9 +26,9 @@ public enum TransitMode: String {
     case tram
     case rail
 }
+
 // swiftlint:disable all
 public class Direction: NSObject, URLSessionDataDelegate {
-
     let fromLocation: String?
     let toLocation: String?
     var altanative: String
@@ -58,7 +58,8 @@ public class Direction: NSObject, URLSessionDataDelegate {
                             to: CLLocationCoordinate2D,
                             alternative: Bool = false,
                             mode: DirectionType = .walking,
-                            transitMode: [TransitMode] = []) {
+                            transitMode: [TransitMode] = [])
+    {
         let from = String(format: "%f,%f", from.latitude, from.longitude)
         let to = String(format: "%f,%f", to.latitude, to.longitude)
         self.init(from: from, to: to, alternative: alternative, mode: mode, transitMode: transitMode)
@@ -68,35 +69,36 @@ public class Direction: NSObject, URLSessionDataDelegate {
                 to: String,
                 alternative: Bool = false,
                 mode: DirectionType = .walking,
-                transitMode: [TransitMode] = []) {
-        self.fromLocation = from
-        self.toLocation = to
-        self.altanative = alternative ? "true" : "false"
-        self.type = mode
+                transitMode: [TransitMode] = [])
+    {
+        fromLocation = from
+        toLocation = to
+        altanative = alternative ? "true" : "false"
+        type = mode
         self.transitMode = transitMode.toValue
     }
 
     public func calculation(completion: @escaping (_ route: Directions) -> Void,
-                            failuer: @escaping (_ error: Error) -> Void) {
-
+                            failuer: @escaping (_ error: Error) -> Void)
+    {
         self.completion = completion
         self.failuer = failuer
 
-        var query: [String:String] = [sensor: "true",
-                                      origin: self.toLocation!,
-                                      destination: self.fromLocation!,
-                                      mode: self.type.rawValue,
-                                      alternatives: self.altanative,
-                                      key: APIKEY]
-        if self.type == .transit && !(self.transitMode?.isEmpty ?? false) {
-            query[transit] = self.transitMode
+        var query: [String: String] = [sensor: "true",
+                                       origin: toLocation!,
+                                       destination: fromLocation!,
+                                       mode: type.rawValue,
+                                       alternatives: altanative,
+                                       key: APIKEY]
+        if type == .transit, !(transitMode?.isEmpty ?? false) {
+            query[transit] = transitMode
         }
 
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
         if let request = Route.request(query) {
             let dataTask = session.dataTask(with: request)
             dataTask.resume()
-        }else{
+        } else {
             failuer(NSError.create(domain: "URL Error",
                                    code: 10061,
                                    userInfo: ["LocalizedRecoverySuggestion": "URL is invalid, please check domain and URL and correct."]))
@@ -107,47 +109,47 @@ public class Direction: NSObject, URLSessionDataDelegate {
 /*
  * URLSessionDataDelegate
  */
-extension Direction {
-
+public extension Direction {
     /*
      * Get Responce and Result
      *
      *
      */
-    public func urlSession(_ session: URLSession,
-                           task: URLSessionTask,
-                           didCompleteWithError error: Error?) {
-
+    func urlSession(_: URLSession,
+                    task _: URLSessionTask,
+                    didCompleteWithError error: Error?)
+    {
         /*
          * Responce status code 200
          */
-        if self.response?.statusCode == 200 {
+        if response?.statusCode == 200 {
             do {
-                if self.data != nil {
-                    let direction = try JSONDecoder().decode(Directions.self, from: self.data!)
+                if data != nil {
+                    let direction = try JSONDecoder().decode(Directions.self, from: data!)
                     /*
                      * Success
                      */
                     if direction.status == "OK"
-                        || direction.errorMessage != nil {
-                        self.completion!(direction)
-                    } else {// Error handling
+                        || direction.errorMessage != nil
+                    {
+                        completion!(direction)
+                    } else { // Error handling
                         let domain = "\(direction.errorMessage ?? "Nothing message")\nStatus: \(direction.status ?? "nothins status")"
                         let err = NSError(domain: domain, code: 10058)
-                        self.failuer!(err)
+                        failuer!(err)
                     }
                 }
             } catch {
                 print("Exception! json decode Error")
             }
-        } else {//Error Handling
+        } else { // Error Handling
             var statusCode: String = "Nothing Responce"
-            if self.response != nil {
+            if response != nil {
                 statusCode = (response?.statusCode.description)!
                 let err = NSError(domain: "Failuer: responce code: \(statusCode)!", code: 10059)
-                self.failuer!(err)
+                failuer!(err)
             } else if error != nil {
-                self.failuer!(error!)
+                failuer!(error!)
             }
         }
     }
@@ -156,7 +158,7 @@ extension Direction {
      * get recive function
      *
      */
-    public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+    func urlSession(_: URLSession, dataTask _: URLSessionDataTask, didReceive data: Data) {
         if self.data == nil {
             self.data = data
         } else {
@@ -168,10 +170,11 @@ extension Direction {
      * get Http response
      *
      */
-    public func urlSession(_ session: URLSession,
-                           dataTask: URLSessionDataTask,
-                           didReceive response: URLResponse,
-                           completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
+    func urlSession(_: URLSession,
+                    dataTask _: URLSessionDataTask,
+                    didReceive response: URLResponse,
+                    completionHandler: @escaping (URLSession.ResponseDisposition) -> Void)
+    {
         self.response = response as? HTTPURLResponse
         completionHandler(.allow)
     }
@@ -181,19 +184,19 @@ extension Direction {
  * Display the route route on the map 😄
  */
 public extension GMSMapView {
-
     func addDirection(routes: [Routes], color: UIColor = .blue) {
         for route in routes {
-            self.addOverlay(path: route.overviewPolyline?.points ?? "", color: color)
+            addOverlay(path: route.overviewPolyline?.points ?? "", color: color)
         }
     }
 
     func addOverlay(path: String, color: UIColor = .blue) {
-        let gmsPath: GMSPath = GMSPath(fromEncodedPath: path)!
+        let gmsPath = GMSPath(fromEncodedPath: path)!
         let line = GMSPolyline(path: gmsPath)
         line.strokeColor = color
         line.strokeWidth = 6.0
         line.map = self
     }
 }
+
 // swiftlint:enable all

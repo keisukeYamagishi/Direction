@@ -7,9 +7,6 @@ jobs:
     runs-on: macOS-latest
     strategy:
       matrix:
-        destination: [
-          'iOS Simulator,name=iPhone 8'
-        ]
         swift-version: [5.0, 4.2, 4.0]
     steps:
       - uses: actions/checkout@v1
@@ -20,14 +17,11 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      - name: Bundle setup
-        run: brew update
-      - name: Bundle install
-        run: bundle install
-      - name: pod install
-        run: pod install
-      - name: Run tests
+      - name: Build config
+        run: make build_config
+      - name: Debug build
+        run: make debug
+      - name: Execute test
         env:
-          DESTINATION: platform=${{ matrix.destination }}
           SWIFT_VERSION: ${{ matrix.swift-version }}
-        run: bundle exec fastlane test
+        run:  make test
