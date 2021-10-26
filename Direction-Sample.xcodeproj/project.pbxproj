@@ -12,7 +12,6 @@
 		B0096F80560CA395E6BCFC49 /* libPods-Direction-Sample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B21EAF6D1BD93CCA99F74B10 /* libPods-Direction-Sample.a */; };
 		C7112867240E79DB00BE64B5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7112866240E79DA00BE64B5 /* Route.swift */; };
 		C7112868240E8E7800BE64B5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7112866240E79DA00BE64B5 /* Route.swift */; };
-		C722000122893AD9005FD5F8 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000022893AD9005FD5F8 /* BaseTestCase.swift */; };
 		C722000C22894283005FD5F8 /* Directions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722000622894283005FD5F8 /* Directions.swift */; };
 		C722000D22894283005FD5F8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C722000722894283005FD5F8 /* LICENSE */; };
 		C722000E22894283005FD5F8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C722000822894283005FD5F8 /* README.md */; };
@@ -48,7 +47,6 @@
 		9095104625A1B22A00048026 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B21EAF6D1BD93CCA99F74B10 /* libPods-Direction-Sample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Direction-Sample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7112866240E79DA00BE64B5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		C722000022893AD9005FD5F8 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		C722000622894283005FD5F8 /* Directions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directions.swift; sourceTree = "<group>"; };
 		C722000722894283005FD5F8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C722000822894283005FD5F8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 			children = (
 				C771F0632285660F00381501 /* Direction_SampleTests.swift */,
 				C771F0652285660F00381501 /* Info.plist */,
-				C722000022893AD9005FD5F8 /* BaseTestCase.swift */,
 			);
 			path = "Direction-SampleTests";
 			sourceTree = "<group>";
@@ -370,7 +367,6 @@
 				C79752DF241155AF00410BA0 /* Directions.swift in Sources */,
 				C7112868240E8E7800BE64B5 /* Route.swift in Sources */,
 				C7434769240275B80024B4DA /* DirectionType+.swift in Sources */,
-				C722000122893AD9005FD5F8 /* BaseTestCase.swift in Sources */,
 				C771F0642285660F00381501 /* Direction_SampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
