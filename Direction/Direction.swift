@@ -30,7 +30,7 @@ public enum TransitMode: String {
 public class Direction: NSObject, URLSessionDataDelegate {
     let fromLocation: String?
     let toLocation: String?
-    var altanative: String
+    var alternative: String
     var type: DirectionType
     var transitMode: String?
 
@@ -48,10 +48,10 @@ public class Direction: NSObject, URLSessionDataDelegate {
      *
      */
     public typealias CompletionHandler = (_ route: Directions) -> Void
-    public typealias FailuerHandler = (_ error: Error) -> Void
+    public typealias FailureHandler = (_ error: Error) -> Void
 
     public var completion: CompletionHandler?
-    public var failuer: FailuerHandler?
+    public var failure: FailureHandler?
 
     public convenience init(from: CLLocationCoordinate2D,
                             to: CLLocationCoordinate2D,
@@ -76,22 +76,22 @@ public class Direction: NSObject, URLSessionDataDelegate {
     {
         fromLocation = from
         toLocation = to
-        altanative = alternative ? "true" : "false"
+        self.alternative = alternative ? "true" : "false"
         type = mode
         self.transitMode = transitMode.toValue
     }
 
     public func detectRoute(completion: @escaping (_ route: Directions) -> Void,
-                            failuer: @escaping (_ error: Error) -> Void)
+                            failure: @escaping (_ error: Error) -> Void)
     {
         self.completion = completion
-        self.failuer = failuer
+        self.failure = failure
 
         var query: [String: String] = [DirectionsKey.sensor: "true",
                                        DirectionsKey.origin: toLocation!,
                                        DirectionsKey.destination: fromLocation!,
                                        DirectionsKey.mode: type.rawValue,
-                                       DirectionsKey.alternatives: altanative,
+                                       DirectionsKey.alternatives: alternative,
                                        DirectionsKey.key: APIKEY]
         if type == .transit,
            !(transitMode?.isEmpty ?? true)
@@ -104,7 +104,7 @@ public class Direction: NSObject, URLSessionDataDelegate {
             let dataTask = session.dataTask(with: request)
             dataTask.resume()
         } else {
-            failuer(NSError(domain: DirectionError.Domain.URLInvalidError,
+            failure(NSError(domain: DirectionError.Domain.URLInvalidError,
                             code: DirectionError.invalidURL.toInt,
                             userInfo: [DirectionError.UserInfo.Key.LocalizedRecoverySuggestion:
                                         DirectionError.UserInfo.Value.InvalidURL]))
@@ -117,7 +117,7 @@ public class Direction: NSObject, URLSessionDataDelegate {
  */
 public extension Direction {
     /*
-     * Get Responce and Result
+     * Get Response and Result
      *
      *
      */
@@ -126,7 +126,7 @@ public extension Direction {
                     didCompleteWithError error: Error?)
     {
         /*
-         * Responce status code 200
+         * Response status code 200
          */
         if let httpResponse = response {
             if httpResponse.statusCode == 200 {
@@ -141,12 +141,12 @@ public extension Direction {
                         {
                             completion?(direction)
                         } else { // Error handling
-                            let errorMessage = "\(direction.errorMessage ?? "Nothing message")\nStatus: \(direction.status ?? "nothins status")"
+                            let errorMessage = "\(direction.errorMessage ?? "Nothing message")\nStatus: \(direction.status ?? "nothing status")"
                             let err = NSError(domain: DirectionError.Domain.GoogleDirectionApiError,
                                               code: DirectionError.apiError.toInt,
                                               userInfo: [DirectionError.UserInfo.Key.LocalizedRecoverySuggestion:
                                                   errorMessage])
-                            failuer?(err)
+                            failure?(err)
                         }
                     }
                 } catch {
@@ -157,10 +157,10 @@ public extension Direction {
                                   code: DirectionError.invalidStatusCode.toInt,
                                   userInfo: [DirectionError.UserInfo.Key.LocalizedRecoverySuggestion:
                                       DirectionError.UserInfo.Value.InvalidHttpStatusCode])
-                failuer?(err)
+                failure?(err)
             }
         } else if let unwrapError = error {
-            failuer?(unwrapError)
+            failure?(unwrapError)
         }
     }
 

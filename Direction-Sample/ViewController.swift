@@ -40,7 +40,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
                 return
             }
             self.mapView.addDirection(routes: routes, color: .blue)
-        }, failuer: { error in
+        }, failure: { error in
             print(error)
         })
     }
@@ -64,7 +64,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
                     return
                 }
                 self.mapView.addDirection(routes: routes)
-            }, failuer: { error in
+            }, failure: { error in
                 print(error)
             })
         }

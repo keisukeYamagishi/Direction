@@ -8,6 +8,7 @@
 
 import XCTest
 import GoogleMaps
+@testable import Direction_Sample
 
 class Direction_SampleTests: XCTestCase {
 
@@ -26,7 +27,7 @@ class Direction_SampleTests: XCTestCase {
         direction.detectRoute(completion: { (route) in
             XCTAssertEqual(route.routes.count, 1)
             exp.fulfill()
-        }, failuer: { _ in
+        }, failure: { _ in
             XCTFail("Failuer? OMG 😱")
             exp.fulfill()
         })
@@ -43,31 +44,31 @@ class Direction_SampleTests: XCTestCase {
         direction.detectRoute(completion: { (route) in
             XCTAssert(route.routes.count > 0 ? true : false )
             exp.fulfill()
-        }, failuer: { _ in
-            XCTFail("Failuer? OMG 😱")
+        }, failure: { _ in
+            XCTFail("Failure? OMG 😱")
             exp.fulfill()
         })
         wait(for: [exp], timeout: 60.0)
     }
 
-    func test_DrectionFailuer () {
+    func test_DirectionFailure () {
 
         let exp = expectation(description: "Failuer Exception")
 
-        let direction = Direction(from: "Failuer_1",
-                                  to: "Failuer_2",
+        let direction = Direction(from: "Failure_1",
+                                  to: "Failure_2",
                                   alternative: true)
         direction.detectRoute(completion: { _ in
-            XCTFail("not Failuer OMG 😱")
+            XCTFail("not Failure OMG 😱")
             exp.fulfill()
-        }, failuer: { _ in
+        }, failure: { _ in
             exp.fulfill()
         })
         wait(for: [exp], timeout: 60.0)
 
     }
 
-    func test_DrectionDriving () {
+    func test_DriectionDriving () {
 
         print("TEST3")
 
@@ -80,16 +81,16 @@ class Direction_SampleTests: XCTestCase {
         direction.detectRoute(completion: { (route) in
             XCTAssert(route.routes.count > 0 ? true : false )
             exp.fulfill()
-        }, failuer: { _ in
+        }, failure: { _ in
             exp.fulfill()
         })
         wait(for: [exp], timeout: 60.0)
 
     }
 
-    func test_DrectionBicycling () {
+    func test_DirectionBicycling () {
 
-        let exp = expectation(description: "Failuer Exception")
+        let exp = expectation(description: "Failure Exception")
         let direction = Direction(from: "35.6775602107869,139.692658446729",
                                   to: "35.707848364433,139.701456092298",
                                   alternative: true,
@@ -97,15 +98,15 @@ class Direction_SampleTests: XCTestCase {
         direction.detectRoute(completion: { (route) in
             XCTAssert(route.routes.count > 0 ? true : false )
             exp.fulfill()
-        }, failuer: { _ in
+        }, failure: { _ in
             exp.fulfill()
         })
         wait(for: [exp], timeout: 60.0)
     }
 
-    func test_DrectionWalking () {
+    func test_DirectionWalking () {
 
-        let exp = expectation(description: "Failuer Exception")
+        let exp = expectation(description: "Failure Exception")
         let direction = Direction(from: "35.6775602107869,139.692658446729",
                                   to: "35.707848364433,139.701456092298",
                                   alternative: true,
@@ -113,9 +114,9 @@ class Direction_SampleTests: XCTestCase {
         direction.detectRoute(completion: { (route) in
             XCTAssert(route.routes.count > 0 ? true : false )
             exp.fulfill()
-        }, failuer: { _ in
+        }, failure: { _ in
             exp.fulfill()
         })
         wait(for: [exp], timeout: 60.0)
-
     }
+}
