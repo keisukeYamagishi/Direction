@@ -39,9 +39,3 @@ extension Dictionary {
         return parts.joined(separator: "&")
     }
 }
-
-extension Error {
-    static func create(domain: String, code: Int, userInfo: [String: Any]) -> Error {
-        NSError(domain: domain, code: code, userInfo: userInfo)
-    }
-}

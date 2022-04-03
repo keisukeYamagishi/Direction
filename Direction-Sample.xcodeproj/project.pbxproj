@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6356A9F2657EC4DF5DD53880 /* libPods-Direction-SampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E90F26EB77DBF200552B3198 /* libPods-Direction-SampleTests.a */; };
 		9095104725A1B22A00048026 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9095104625A1B22A00048026 /* SceneDelegate.swift */; };
+		90AA122E27F999C0008B725D /* DirectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AA122D27F999C0008B725D /* DirectionError.swift */; };
 		B0096F80560CA395E6BCFC49 /* libPods-Direction-Sample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B21EAF6D1BD93CCA99F74B10 /* libPods-Direction-Sample.a */; };
 		C7112867240E79DB00BE64B5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7112866240E79DA00BE64B5 /* Route.swift */; };
 		C7112868240E8E7800BE64B5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7112866240E79DA00BE64B5 /* Route.swift */; };
@@ -45,6 +46,7 @@
 		508315D27301A8E7055BA314 /* Pods-Direction-SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Direction-SampleTests.release.xcconfig"; path = "Target Support Files/Pods-Direction-SampleTests/Pods-Direction-SampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		8615663F83DB20D3B08998A0 /* Pods-Direction-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Direction-Sample.release.xcconfig"; path = "Target Support Files/Pods-Direction-Sample/Pods-Direction-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		9095104625A1B22A00048026 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		90AA122D27F999C0008B725D /* DirectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionError.swift; sourceTree = "<group>"; };
 		B21EAF6D1BD93CCA99F74B10 /* libPods-Direction-Sample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Direction-Sample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7112866240E79DA00BE64B5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C722000622894283005FD5F8 /* Directions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directions.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				C722000922894283005FD5F8 /* Extension.swift */,
 				C722000A22894283005FD5F8 /* Direction.swift */,
 				C7BC60D7240253FC00FF2732 /* DirectionType+.swift */,
+				90AA122D27F999C0008B725D /* DirectionError.swift */,
 			);
 			path = Direction;
 			sourceTree = SOURCE_ROOT;
@@ -379,6 +382,7 @@
 				C7112867240E79DB00BE64B5 /* Route.swift in Sources */,
 				C722000C22894283005FD5F8 /* Directions.swift in Sources */,
 				C722000F22894283005FD5F8 /* Extension.swift in Sources */,
+				90AA122E27F999C0008B725D /* DirectionError.swift in Sources */,
 				C7C703F62184ACAA00706081 /* AppDelegate.swift in Sources */,
 				C7C703F22184ACAA00706081 /* ViewController.swift in Sources */,
 				C722001022894283005FD5F8 /* Direction.swift in Sources */,
