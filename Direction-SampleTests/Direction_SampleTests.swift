@@ -9,7 +9,6 @@
 import XCTest
 import GoogleMaps
 
-// swiftlint:disable all
 class Direction_SampleTests: XCTestCase {
 
     override func setUp() {
@@ -24,7 +23,7 @@ class Direction_SampleTests: XCTestCase {
 
         let direction = Direction(from: "35.6775602107869,139.692658446729",
                                   to: "35.707848364433,139.701456092298")
-        direction.calculation(completion: { (route) in
+        direction.detectRoute(completion: { (route) in
             XCTAssertEqual(route.routes.count, 1)
             exp.fulfill()
         }, failuer: { _ in
@@ -41,7 +40,7 @@ class Direction_SampleTests: XCTestCase {
         let direction = Direction(from: "35.6775602107869,139.692658446729",
                                   to: "35.707848364433,139.701456092298",
                                   alternative: true)
-        direction.calculation(completion: { (route) in
+        direction.detectRoute(completion: { (route) in
             XCTAssert(route.routes.count > 0 ? true : false )
             exp.fulfill()
         }, failuer: { _ in
@@ -58,7 +57,7 @@ class Direction_SampleTests: XCTestCase {
         let direction = Direction(from: "Failuer_1",
                                   to: "Failuer_2",
                                   alternative: true)
-        direction.calculation(completion: { _ in
+        direction.detectRoute(completion: { _ in
             XCTFail("not Failuer OMG 😱")
             exp.fulfill()
         }, failuer: { _ in
@@ -78,7 +77,7 @@ class Direction_SampleTests: XCTestCase {
                                   to: "35.707848364433,139.701456092298",
                                   alternative: true,
                                   mode: .driving)
-        direction.calculation(completion: { (route) in
+        direction.detectRoute(completion: { (route) in
             XCTAssert(route.routes.count > 0 ? true : false )
             exp.fulfill()
         }, failuer: { _ in
@@ -95,7 +94,7 @@ class Direction_SampleTests: XCTestCase {
                                   to: "35.707848364433,139.701456092298",
                                   alternative: true,
                                   mode: .bicycling)
-        direction.calculation(completion: { (route) in
+        direction.detectRoute(completion: { (route) in
             XCTAssert(route.routes.count > 0 ? true : false )
             exp.fulfill()
         }, failuer: { _ in
@@ -111,7 +110,7 @@ class Direction_SampleTests: XCTestCase {
                                   to: "35.707848364433,139.701456092298",
                                   alternative: true,
                                   mode: .walking)
-        direction.calculation(completion: { (route) in
+        direction.detectRoute(completion: { (route) in
             XCTAssert(route.routes.count > 0 ? true : false )
             exp.fulfill()
         }, failuer: { _ in
@@ -120,16 +119,3 @@ class Direction_SampleTests: XCTestCase {
         wait(for: [exp], timeout: 60.0)
 
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-}
-// swiftlint:enable all
