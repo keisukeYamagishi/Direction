@@ -35,12 +35,12 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         coordinates.append(toMarker)
         self.directionMarker(location: fromMarker)
         self.directionMarker(location: toMarker)
-        direction.calculation(completion: { [unowned self] route in
+        direction.detectRoute(completion: { [unowned self] route in
             guard let routes = route.routes as? [Routes] else {
                 return
             }
             self.mapView.addDirection(routes: routes, color: .blue)
-        }, failuer: { error in
+        }, failure: { error in
             print(error)
         })
     }
@@ -59,12 +59,12 @@ class ViewController: UIViewController, GMSMapViewDelegate {
 
             self.direction = Direction(from: coordinates[0], to: coordinates[1], alternative: true, mode: .transit)
 
-            direction.calculation(completion: {[unowned self] route in
+            direction.detectRoute(completion: {[unowned self] route in
                 guard let routes = route.routes as? [Routes] else {
                     return
                 }
                 self.mapView.addDirection(routes: routes)
-            }, failuer: { error in
+            }, failure: { error in
                 print(error)
             })
         }
@@ -76,5 +76,24 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         marker.title = "start Direction"
         marker.snippet = "Hi! What's up!"
         marker.map = mapView
+    }
+}
+
+/*
+ * Display the route route on the map 😄
+ */
+public extension GMSMapView {
+    func addDirection(routes: [Routes], color: UIColor = .blue) {
+        for route in routes {
+            addOverlay(path: route.overviewPolyline?.points ?? "", color: color)
+        }
+    }
+
+    func addOverlay(path: String, color: UIColor = .blue) {
+        let gmsPath = GMSPath(fromEncodedPath: path)!
+        let line = GMSPolyline(path: gmsPath)
+        line.strokeColor = color
+        line.strokeWidth = 6.0
+        line.map = self
     }
 }

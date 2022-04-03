@@ -16,7 +16,7 @@ When creating an instance, you can display the route by passing the latitude and
 
 |CI|build|
 |:----|:----|
-|travis|[![Build Status](https://travis-ci.org/keisukeYamagishi/Direction.svg?branch=master)](https://travis-ci.org/keisukeYamagishi/Direction)|
+|github actions|[![build](https://github.com/keisukeYamagishi/Direction/actions/workflows/swift.yml/badge.svg)](https://github.com/keisukeYamagishi/Direction/actions/workflows/swift.yml)|
 
 ***Via SSH***: For those who plan on regularly making direct commits, cloning over SSH may provide a better experience (which requires uploading SSH keys to GitHub):
 
@@ -86,17 +86,16 @@ $ pod install
 
 ### Sample Code
 
-```
+```swift
 let direction = Direction(from:"35.6775602107869,139.692658446729",to: "35.707848364433,139.701456092298",mode: .walking)
-direction.directionCompletion(handler: { (route) in
-
-    for route in route.routes {
-        self.mapView.addDirection(path: (route?.overview_polyline?.points)!)
+direction.detectRoute(completion: { [unowned self] route in
+    guard let routes = route.routes as? [Routes] else {
+        return
     }
-
-}) { (error) in
-    print (error)
-}
+    self.mapView.addDirection(routes: routes, color: .blue)
+}, failure: { error in
+    print(error)
+})
 ```
 *too easy!!*
 

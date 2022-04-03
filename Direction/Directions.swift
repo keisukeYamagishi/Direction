@@ -8,17 +8,19 @@
 
 import Foundation
 
-let sensor = "sensor"
-let origin = "origin"
-let destination = "destination"
-let mode = "mode"
-let key = "key"
-let alternatives = "alternatives"
-let transit = "transit_mode"
-let overView = "overview_polyline"
-let routes = "routes"
-let polyline = "polyline"
-let points = "points"
+enum DirectionsKey {
+    static let sensor = "sensor"
+    static let origin = "origin"
+    static let destination = "destination"
+    static let mode = "mode"
+    static let key = "key"
+    static let alternatives = "alternatives"
+    static let transit = "transit_mode"
+    static let overView = "overview_polyline"
+    static let routes = "routes"
+    static let polyline = "polyline"
+    static let points = "points"
+}
 
 public struct Directions: Codable {
     public var errorMessage: String?

@@ -8,7 +8,6 @@
 
 import CoreLocation
 import Foundation
-import GoogleMaps
 
 public var APIKEY: String = ""
 
@@ -31,7 +30,7 @@ public enum TransitMode: String {
 public class Direction: NSObject, URLSessionDataDelegate {
     let fromLocation: String?
     let toLocation: String?
-    var altanative: String
+    var alternative: String
     var type: DirectionType
     var transitMode: String?
 
@@ -49,10 +48,10 @@ public class Direction: NSObject, URLSessionDataDelegate {
      *
      */
     public typealias CompletionHandler = (_ route: Directions) -> Void
-    public typealias FailuerHandler = (_ error: Error) -> Void
+    public typealias FailureHandler = (_ error: Error) -> Void
 
     public var completion: CompletionHandler?
-    public var failuer: FailuerHandler?
+    public var failure: FailureHandler?
 
     public convenience init(from: CLLocationCoordinate2D,
                             to: CLLocationCoordinate2D,
@@ -62,7 +61,11 @@ public class Direction: NSObject, URLSessionDataDelegate {
     {
         let from = String(format: "%f,%f", from.latitude, from.longitude)
         let to = String(format: "%f,%f", to.latitude, to.longitude)
-        self.init(from: from, to: to, alternative: alternative, mode: mode, transitMode: transitMode)
+        self.init(from: from,
+                  to: to,
+                  alternative: alternative,
+                  mode: mode,
+                  transitMode: transitMode)
     }
 
     public init(from: String,
@@ -73,25 +76,27 @@ public class Direction: NSObject, URLSessionDataDelegate {
     {
         fromLocation = from
         toLocation = to
-        altanative = alternative ? "true" : "false"
+        self.alternative = alternative ? "true" : "false"
         type = mode
         self.transitMode = transitMode.toValue
     }
 
-    public func calculation(completion: @escaping (_ route: Directions) -> Void,
-                            failuer: @escaping (_ error: Error) -> Void)
+    public func detectRoute(completion: @escaping (_ route: Directions) -> Void,
+                            failure: @escaping (_ error: Error) -> Void)
     {
         self.completion = completion
-        self.failuer = failuer
+        self.failure = failure
 
-        var query: [String: String] = [sensor: "true",
-                                       origin: toLocation!,
-                                       destination: fromLocation!,
-                                       mode: type.rawValue,
-                                       alternatives: altanative,
-                                       key: APIKEY]
-        if type == .transit, !(transitMode?.isEmpty ?? false) {
-            query[transit] = transitMode
+        var query: [String: String] = [DirectionsKey.sensor: "true",
+                                       DirectionsKey.origin: toLocation!,
+                                       DirectionsKey.destination: fromLocation!,
+                                       DirectionsKey.mode: type.rawValue,
+                                       DirectionsKey.alternatives: alternative,
+                                       DirectionsKey.key: APIKEY]
+        if type == .transit,
+           !(transitMode?.isEmpty ?? true)
+        {
+            query[DirectionsKey.transit] = transitMode
         }
 
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
@@ -99,9 +104,10 @@ public class Direction: NSObject, URLSessionDataDelegate {
             let dataTask = session.dataTask(with: request)
             dataTask.resume()
         } else {
-            failuer(NSError.create(domain: "URL Error",
-                                   code: 10061,
-                                   userInfo: ["LocalizedRecoverySuggestion": "URL is invalid, please check domain and URL and correct."]))
+            failure(NSError(domain: DirectionError.Domain.URLInvalidError,
+                            code: DirectionError.invalidURL.toInt,
+                            userInfo: [DirectionError.UserInfo.Key.LocalizedRecoverySuggestion:
+                                        DirectionError.UserInfo.Value.InvalidURL]))
         }
     }
 }
@@ -111,7 +117,7 @@ public class Direction: NSObject, URLSessionDataDelegate {
  */
 public extension Direction {
     /*
-     * Get Responce and Result
+     * Get Response and Result
      *
      *
      */
@@ -120,37 +126,41 @@ public extension Direction {
                     didCompleteWithError error: Error?)
     {
         /*
-         * Responce status code 200
+         * Response status code 200
          */
-        if response?.statusCode == 200 {
-            do {
-                if data != nil {
-                    let direction = try JSONDecoder().decode(Directions.self, from: data!)
-                    /*
-                     * Success
-                     */
-                    if direction.status == "OK"
-                        || direction.errorMessage != nil
-                    {
-                        completion!(direction)
-                    } else { // Error handling
-                        let domain = "\(direction.errorMessage ?? "Nothing message")\nStatus: \(direction.status ?? "nothins status")"
-                        let err = NSError(domain: domain, code: 10058)
-                        failuer!(err)
+        if let httpResponse = response {
+            if httpResponse.statusCode == 200 {
+                do {
+                    if let unwrapData = data {
+                        let direction = try JSONDecoder().decode(Directions.self, from: unwrapData)
+                        /*
+                         * Success
+                         */
+                        if direction.status == "OK",
+                           direction.errorMessage == nil
+                        {
+                            completion?(direction)
+                        } else { // Error handling
+                            let errorMessage = "\(direction.errorMessage ?? "Nothing message")\nStatus: \(direction.status ?? "nothing status")"
+                            let err = NSError(domain: DirectionError.Domain.GoogleDirectionApiError,
+                                              code: DirectionError.apiError.toInt,
+                                              userInfo: [DirectionError.UserInfo.Key.LocalizedRecoverySuggestion:
+                                                  errorMessage])
+                            failure?(err)
+                        }
                     }
+                } catch {
+                    print(error)
                 }
-            } catch {
-                print("Exception! json decode Error")
+            } else {
+                let err = NSError(domain: DirectionError.Domain.HttpResponseError,
+                                  code: DirectionError.invalidStatusCode.toInt,
+                                  userInfo: [DirectionError.UserInfo.Key.LocalizedRecoverySuggestion:
+                                      DirectionError.UserInfo.Value.InvalidHttpStatusCode])
+                failure?(err)
             }
-        } else { // Error Handling
-            var statusCode: String = "Nothing Responce"
-            if response != nil {
-                statusCode = (response?.statusCode.description)!
-                let err = NSError(domain: "Failuer: responce code: \(statusCode)!", code: 10059)
-                failuer!(err)
-            } else if error != nil {
-                failuer!(error!)
-            }
+        } else if let unwrapError = error {
+            failure?(unwrapError)
         }
     }
 
@@ -177,25 +187,6 @@ public extension Direction {
     {
         self.response = response as? HTTPURLResponse
         completionHandler(.allow)
-    }
-}
-
-/*
- * Display the route route on the map 😄
- */
-public extension GMSMapView {
-    func addDirection(routes: [Routes], color: UIColor = .blue) {
-        for route in routes {
-            addOverlay(path: route.overviewPolyline?.points ?? "", color: color)
-        }
-    }
-
-    func addOverlay(path: String, color: UIColor = .blue) {
-        let gmsPath = GMSPath(fromEncodedPath: path)!
-        let line = GMSPolyline(path: gmsPath)
-        line.strokeColor = color
-        line.strokeWidth = 6.0
-        line.map = self
     }
 }
 
