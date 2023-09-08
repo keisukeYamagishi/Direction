@@ -1,13 +1,12 @@
 # Direction
 
-[![](https://img.shields.io/apm/l/vim-mode.svg)](https://github.com/keisukeYamagishi/Direction/blob/master/LICENSE)
 [![](https://img.shields.io/badge/lang-Swift-fc3158)](https://swift.org/)
 
 ## OverView
 
 Direction for Google Map for iOS SDK
 
-<img src="https://github.com/keisukeYamagishi/Direction/blob/master/IMG_3437.PNG" width="30%" height="30%">
+<img src="https://github.com/keisukeYamagishi/Direction/blob/main/IMG_3437.PNG" width="30%" height="30%">
 
 It is a library that makes it easy to conduct route search with the Google map SDK for iOS.
 When creating an instance, you can display the route by passing the latitude and longitude of the departure point, the latitude and longitude of the arrival point as an argument, and calling the instance method.
